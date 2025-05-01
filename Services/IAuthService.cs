@@ -1,10 +1,10 @@
-﻿using Chapter_House.Entities;
+﻿using Chapter_House.DTO;
 
 namespace Chapter_House.Services
 {
     public interface IAuthService
     {
-        public Task<SignUpResponse> SignUp(SignUpRequest request);
-        public Task<SignInResponse> SignIn(SignInRequest request);
+        Task<SignUpResponse> SignUpAsync(SignUpRequest req);
+        Task<SignInResponse> SignInAsync(SignInRequest req);
     }
 }

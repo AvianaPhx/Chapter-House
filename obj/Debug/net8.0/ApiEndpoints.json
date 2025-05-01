@@ -2,14 +2,14 @@
   {
     "ContainingType": "Chapter_House.Controllers.AuthController",
     "Method": "SignIn",
-    "RelativePath": "api/Auth/SignIn",
+    "RelativePath": "api/Auth/SignIn/signin",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Chapter_House.Entities.SignInRequest",
+        "Type": "Chapter_House.DTO.SignInRequest",
         "IsRequired": true
       }
     ],
@@ -18,38 +18,17 @@
   {
     "ContainingType": "Chapter_House.Controllers.AuthController",
     "Method": "SignUp",
-    "RelativePath": "api/Auth/SignUp",
+    "RelativePath": "api/Auth/SignUp/signup",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Chapter_House.Entities.SignUpRequest",
+        "Type": "Chapter_House.DTO.SignUpRequest",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Chapter_House.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Chapter_House.WeatherForecast, Chapter House, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "GetWeatherForecast"
   }
 ]

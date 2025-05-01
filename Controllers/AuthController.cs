@@ -1,4 +1,4 @@
-﻿using Chapter_House.Entities;
+﻿using Chapter_House.DTO;
 using Chapter_House.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,48 +9,26 @@ namespace Chapter_House.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        public readonly IAuthService _authService;
-        public AuthController(IAuthService authService)
+        public readonly IAuthService _auth;
+        public AuthController(IAuthService authService) => _auth = authService;
+        
+
+        [HttpPost("signup")]
+        public async Task<IActionResult> SignUp([FromBody] SignUpRequest request)
         {
-            _authService = authService;
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var result = await _auth.SignUpAsync(request);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> SignUp(SignUpRequest request)
+        [HttpPost("signin")]
+        public async Task<IActionResult> SignIn([FromBody] SignInRequest request)
         {
-            SignUpResponse response = new();
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            try
-            {
-
-            }
-            catch(Exception ex)
-            {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
-
-            }
-
-            return Ok(response);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> SignIn(SignInRequest request)
-        {
-            SignInResponse response = new();
-
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
-
-            }
-
-            return Ok(response);
+            var result = await _auth.SignInAsync(request);
+            return result.IsSuccess ? Ok(result) : Unauthorized(result);
         }
     }
 }

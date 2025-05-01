@@ -8,12 +8,16 @@ D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.MvcApplication
 D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.sourcelink.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\appsettings.Development.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\appsettings.json
+D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\package-lock.json
+D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\package.json
+D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\public\manifest.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.staticwebassets.endpoints.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.exe
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.deps.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.runtimeconfig.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.dll
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.pdb
+D:\Github Repository\Chapter House\bin\Debug\net8.0\BCrypt.Net-Next.dll
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Humanizer.dll
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Build.Locator.dll
@@ -130,13 +134,10 @@ D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets\msbuild.buil
 D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Chapter House.props
 D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Chapter House.props
 D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets.pack.json
-D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter .12C06A35.Up2Date
 D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.dll
 D:\Github Repository\Chapter House\obj\Debug\net8.0\refint\Chapter House.dll
 D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.pdb
 D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.genruntimeconfig.cache
 D:\Github Repository\Chapter House\obj\Debug\net8.0\ref\Chapter House.dll
-D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\package-lock.json
-D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\package.json
-D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\public\manifest.json
+D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

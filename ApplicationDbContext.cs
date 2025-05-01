@@ -5,15 +5,13 @@ namespace Chapter_House
 {
     public class ApplicationDbContext : DbContext 
     {
-        protected readonly IConfiguration Configuration;
+        private readonly IConfiguration _config;
+        public ApplicationDbContext(IConfiguration config) => _config = config;
 
-        public ApplicationDbContext(IConfiguration configuration) => Configuration = configuration;
+        protected override void OnConfiguring(DbContextOptionsBuilder options) 
+            => options.UseNpgsql(_config.GetConnectionString("DatabaseConnection"));
+        
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            options.UseNpgsql(Configuration.GetConnectionString("DatabaseConnection"));
-        }
-
-        public DbSet<User> User { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
