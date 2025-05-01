@@ -1,0 +1,142 @@
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.csproj.AssemblyReference.cache
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.AssemblyInfoInputs.cache
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.AssemblyInfo.cs
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.csproj.CoreCompileInputs.cache
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.MvcApplicationPartsAssemblyInfo.cs
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.MvcApplicationPartsAssemblyInfo.cache
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.sourcelink.json
+D:\Github Repository\Chapter House\bin\Debug\net8.0\appsettings.Development.json
+D:\Github Repository\Chapter House\bin\Debug\net8.0\appsettings.json
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.staticwebassets.endpoints.json
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.exe
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.deps.json
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.runtimeconfig.json
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.pdb
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Humanizer.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Build.Locator.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Mono.TextTemplating.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Npgsql.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\System.CodeDom.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\System.Composition.Convention.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\System.Composition.Hosting.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\System.Composition.Runtime.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\System.Composition.TypedParts.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\System.IO.Pipelines.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\System.Text.Json.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+D:\Github Repository\Chapter House\obj\Debug\net8.0\scopedcss\bundle\Chapter House.styles.css
+D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets.build.json
+D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets.development.json
+D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets\msbuild.Chapter House.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets\msbuild.Chapter House.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets\msbuild.build.Chapter House.props
+D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Chapter House.props
+D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Chapter House.props
+D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets.pack.json
+D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter .12C06A35.Up2Date
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.dll
+D:\Github Repository\Chapter House\obj\Debug\net8.0\refint\Chapter House.dll
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.pdb
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.genruntimeconfig.cache
+D:\Github Repository\Chapter House\obj\Debug\net8.0\ref\Chapter House.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\package-lock.json
+D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\package.json
+D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\public\manifest.json
