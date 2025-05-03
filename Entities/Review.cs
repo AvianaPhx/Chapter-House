@@ -5,17 +5,20 @@ namespace Chapter_House.Entities
 {
     public class Review
     {
-        [Key] public int Id {get; set; }
+        [Key]
+        public int Id { get; set; }
 
-        public int UserId{get; set; }
-        public int BookId{get; set; }
+        [Range(1,5)]
+        public int Rating { get; set; }
 
-        [Range(1,5)] public int Rating { get; set; }
-        [MaxLength(1000)] public string? Comment { get; set; }
+        public string Comment { get; set; } = string.Empty;
 
-        public DateTime ReviewedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public User User { get; set; } = null!;
+        /* Foreign Keys */
+        public int BookId { get; set; }
         public Book Book { get; set; } = null!;
+        public long UserId { get; set; }
+        public User User { get; set; } = null!;
     }
 }

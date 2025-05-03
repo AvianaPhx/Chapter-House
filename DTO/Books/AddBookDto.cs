@@ -1,17 +1,12 @@
-﻿using Chapter_House.Entities.Bridge;
-using Chapter_House.Entities.Commerce;
-using Chapter_House.Entities.Enums;
+﻿using Chapter_House.Entities.Enums;
 using Chapter_House.Entities.Lookup;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
-namespace Chapter_House.Entities.Core
+namespace Chapter_House.DTO.Books
 {
-    public class Book
+    public class AddBookDto
     {
-        [Key]
-        public int Id { get; set; }
-
         [Required, MaxLength(150)]
         public string Title { get; set; } = string.Empty;
 
@@ -24,6 +19,5 @@ namespace Chapter_House.Entities.Core
         public int Stock { get; set; }
         public DateTime Published { get; set; }
         public DateTime ListedAt { get; set; } = DateTime.UtcNow;
-
     }
 }

@@ -141,3 +141,12 @@ D:\Github Repository\Chapter House\obj\Debug\net8.0\refint\Chapter House.dll
 D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.pdb
 D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.genruntimeconfig.cache
 D:\Github Repository\Chapter House\obj\Debug\net8.0\ref\Chapter House.dll
+D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Github Repository\Chapter House\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

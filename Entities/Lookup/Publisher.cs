@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Chapter_House.Entities.Lookup
 {
-    public class Publisher //1-to-many with book
+    public class Publisher
     {
         [Key] public int Id { get; set; }
 

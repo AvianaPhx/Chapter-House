@@ -3,17 +3,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Chapter_House.Entities.Commerce
 {
-    public class Discount
+    public class OrderItem
     {
         [Key]
         public int Id { get; set; }
-        public decimal PerfectOff { get; set; }
-        public bool OnSaleFlag { get; set; }
-        public DateTime StartsUtc { get; set; }
-        public DateTime EndsUtc { get; set; }
-
-        /* Foreign Keys */
+        public int Quantity { get; set; }
+        public decimal UnitPrice { get; set; }
         public int BookId { get; set; }
         public Book Book { get; set; } = null!;
+        public int OrderId { get; set; }
+        public Order Order { get; set; } = null!;
     }
 }

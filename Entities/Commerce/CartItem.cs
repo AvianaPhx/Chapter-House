@@ -5,14 +5,15 @@ namespace Chapter_House.Entities.Commerce
 {
     public class CartItem
     {
-        [Key] public int Id { get; set; }
+        [Key] 
+        public int Id { get; set; }
+        public int Quantity { get; set; }
 
+        /* Foreign Keys */
         public int UserId { get; set; }
-        public int BookId { get; set; }
-
-        [Range(1, int.MaxValue)] public int Quantity { get; set; }
-
         public User User { get; set; } = null!;
+
+        public int BookId { get; set; }
         public Book Book { get; set; } = null!;
     }
 }

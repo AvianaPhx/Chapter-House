@@ -3,7 +3,12 @@ using Chapter_House.Entities;
 using Microsoft.EntityFrameworkCore;
 using BCrypt.Net;
 using System.Runtime.CompilerServices;
+using System.IdentityModel.Tokens.Jwt;
 using Chapter_House.Entities.Core;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using System.Text;
 
 namespace Chapter_House.Services
 {
@@ -11,7 +16,13 @@ namespace Chapter_House.Services
     {
 
         private readonly ApplicationDbContext _db;
-        public AuthService(ApplicationDbContext db) => _db = db;
+        private readonly JwtSettings _jwt;
+
+        public AuthService(ApplicationDbContext db, IOptions<JwtSettings> jwtOptions)
+        {
+            _db = db;
+            _jwt = jwtOptions.Value;
+        }
 
 
         public async Task<SignUpResponse> SignUpAsync(SignUpRequest req)
@@ -59,11 +70,39 @@ namespace Chapter_House.Services
                 };
             }
 
+            var (token, expires) = GenerateJwtToken(user);
+
             return new SignInResponse
             {
                 IsSuccess = true,
-                Message = "Login successful"
+                Message = "Login successful",
+                AccessToken = token,
+                ExpiresAt = expires
             };
+        }
+
+        private (string token, DateTime expires) GenerateJwtToken(User user)
+        {
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwt.Secret));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[]
+            {
+            new Claim(JwtRegisteredClaimNames.Sub,  user.Id.ToString()),
+            new Claim(JwtRegisteredClaimNames.Email,user.Email),
+            new Claim(ClaimTypes.Role,              user.Role.ToString())
+        };
+
+            var expires = DateTime.UtcNow.AddHours(_jwt.ExpiryHours);
+
+            var token = new JwtSecurityToken(
+                issuer: _jwt.Issuer,
+                audience: _jwt.Audience,
+                claims: claims,
+                expires: expires,
+                signingCredentials: creds);
+
+            return (new JwtSecurityTokenHandler().WriteToken(token), expires);
         }
 
     }

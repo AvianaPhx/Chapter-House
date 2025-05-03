@@ -33,7 +33,7 @@ namespace Chapter_House
         public DbSet<Whitelist> Whitelists => Set<Whitelist>();
         public DbSet<Order> Orders => Set<Order>();
         public DbSet<OrderItem> OrderItems => Set<OrderItem>();
-        public DbSet<Entities.Discount> Discounts => Set<Entities.Discount>();
+        public DbSet<Discount> Discounts => Set<Discount>();
 
         /* Social / Marketing */
         public DbSet<Review> Reviews => Set<Review>();
@@ -57,21 +57,13 @@ namespace Chapter_House
             b.Entity<Whitelist>().HasIndex(w => new { w.UserId, w.BookId }).IsUnique();
             b.Entity<Review>().HasIndex(r => new { r.UserId, r.BookId }).IsUnique();
 
-            /* ———  Explicit relationship examples  ——— */
-            b.Entity<Book>()
-             .HasOne(bk => bk.Publisher)
-             .WithMany(pub => pub.Books)
-             .HasForeignKey(bk => bk.PublisherId);
+            //  ⬇ NEW: Book ↔ Discount (one-to-many)
+
 
             b.Entity<OrderItem>()
-             .HasOne(oi => oi.Order)
-             .WithMany(o => o.Items)
-             .HasForeignKey(oi => oi.OrderId);
-
-            b.Entity<OrderItem>()
-             .HasOne(oi => oi.Book)
-             .WithMany(bk => bk.OrderItems)
-             .HasForeignKey(oi => oi.BookId);
+                .HasOne(oi => oi.Order)
+                .WithMany(o => o.Items)
+                .HasForeignKey(oi => oi.OrderId);
         }
 
     }
