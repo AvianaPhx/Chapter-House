@@ -3,6 +3,7 @@ using Chapter_House.Entities;
 using Microsoft.EntityFrameworkCore;
 using BCrypt.Net;
 using System.Runtime.CompilerServices;
+using Chapter_House.Entities.Core;
 
 namespace Chapter_House.Services
 {
@@ -13,7 +14,6 @@ namespace Chapter_House.Services
         public AuthService(ApplicationDbContext db) => _db = db;
 
 
-        /* Sign Up */
         public async Task<SignUpResponse> SignUpAsync(SignUpRequest req)
         {
             // Checking the Email already used or not
@@ -49,7 +49,7 @@ namespace Chapter_House.Services
 
         public async Task<SignInResponse> SignInAsync(SignInRequest req)
         {
-            var user = await _db.Users.SingleOrDefaultAsync(u => u.Email == req.Email);
+            var user = await _db.Users.SingleOrDefaultAsync(u => u.Email == req.Email && u.Role == req.Role);
             if (user is null || !BCrypt.Net.BCrypt.Verify(req.Password, user.PasswordHash))
             {
                 return new SignInResponse

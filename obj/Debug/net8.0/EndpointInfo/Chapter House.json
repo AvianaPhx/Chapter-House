@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Auth/SignUp/signup": {
+    "/api/Auth/signup": {
       "post": {
         "tags": [
           "Auth"
@@ -36,7 +36,7 @@
         }
       }
     },
-    "/api/Auth/SignIn/signin": {
+    "/api/Auth/signin": {
       "post": {
         "tags": [
           "Auth"
@@ -70,10 +70,20 @@
   },
   "components": {
     "schemas": {
+      "Role": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "SignInRequest": {
         "required": [
           "email",
-          "password"
+          "password",
+          "role"
         ],
         "type": "object",
         "properties": {
@@ -86,6 +96,9 @@
             "maxLength": 100,
             "minLength": 6,
             "type": "string"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Role"
           }
         },
         "additionalProperties": false

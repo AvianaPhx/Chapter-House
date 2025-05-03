@@ -2,7 +2,7 @@
   {
     "ContainingType": "Chapter_House.Controllers.AuthController",
     "Method": "SignIn",
-    "RelativePath": "api/Auth/SignIn/signin",
+    "RelativePath": "api/Auth/signin",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -18,7 +18,7 @@
   {
     "ContainingType": "Chapter_House.Controllers.AuthController",
     "Method": "SignUp",
-    "RelativePath": "api/Auth/SignUp/signup",
+    "RelativePath": "api/Auth/signup",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

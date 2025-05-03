@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Chapter_House.Entities;
+using System.ComponentModel.DataAnnotations;
+using static Chapter_House.Entities.Enums.Helpers;
 
 namespace Chapter_House.DTO
 {
@@ -9,5 +11,8 @@ namespace Chapter_House.DTO
 
         [Required, MinLength(6), MaxLength(100)]
         public string Password { get; init; } = string.Empty;
+
+        [Required]
+        public Role Role { get; set; }
     }
 }

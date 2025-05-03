@@ -1,16 +1,9 @@
-D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.csproj.AssemblyReference.cache
-D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.GeneratedMSBuildEditorConfig.editorconfig
-D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.AssemblyInfoInputs.cache
-D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.AssemblyInfo.cs
-D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.csproj.CoreCompileInputs.cache
-D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.MvcApplicationPartsAssemblyInfo.cs
-D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.MvcApplicationPartsAssemblyInfo.cache
-D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.sourcelink.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\appsettings.Development.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\appsettings.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\package-lock.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\package.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\public\manifest.json
+D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\tsconfig.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.staticwebassets.endpoints.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.exe
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.deps.json
@@ -124,6 +117,14 @@ D:\Github Repository\Chapter House\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Wo
 D:\Github Repository\Chapter House\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\Github Repository\Chapter House\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\Github Repository\Chapter House\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.csproj.AssemblyReference.cache
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.AssemblyInfoInputs.cache
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.AssemblyInfo.cs
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.csproj.CoreCompileInputs.cache
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.MvcApplicationPartsAssemblyInfo.cs
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.MvcApplicationPartsAssemblyInfo.cache
+D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.sourcelink.json
 D:\Github Repository\Chapter House\obj\Debug\net8.0\scopedcss\bundle\Chapter House.styles.css
 D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets.build.json
 D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets.development.json
@@ -140,4 +141,3 @@ D:\Github Repository\Chapter House\obj\Debug\net8.0\refint\Chapter House.dll
 D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.pdb
 D:\Github Repository\Chapter House\obj\Debug\net8.0\Chapter House.genruntimeconfig.cache
 D:\Github Repository\Chapter House\obj\Debug\net8.0\ref\Chapter House.dll
-D:\Github Repository\Chapter House\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

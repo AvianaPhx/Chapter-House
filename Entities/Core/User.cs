@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.ComponentModel.DataAnnotations;
+using static Chapter_House.Entities.Enums.Helpers;
 
-namespace Chapter_House.Entities
+namespace Chapter_House.Entities.Core
 {
+
     public class User
     {
 
@@ -17,6 +19,9 @@ namespace Chapter_House.Entities
 
         [Required]
         public string PasswordHash { get; set; } = string.Empty;
+
+        [Required]
+        public Role Role { get; set; } = Role.User;
 
 
         public string? Address { get; set; }
