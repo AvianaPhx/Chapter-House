@@ -423,7 +423,7 @@ namespace Chapter_House.Migrations
             modelBuilder.Entity("Chapter_House.Entities.Bridge.BookGenre", b =>
                 {
                     b.HasOne("Chapter_House.Entities.Core.Book", "Book")
-                        .WithMany("Genres")
+                        .WithMany()
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -461,7 +461,7 @@ namespace Chapter_House.Migrations
             modelBuilder.Entity("Chapter_House.Entities.Commerce.Discount", b =>
                 {
                     b.HasOne("Chapter_House.Entities.Core.Book", "Book")
-                        .WithMany("Discounts")
+                        .WithMany()
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -528,7 +528,7 @@ namespace Chapter_House.Migrations
             modelBuilder.Entity("Chapter_House.Entities.Review", b =>
                 {
                     b.HasOne("Chapter_House.Entities.Core.Book", "Book")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -542,15 +542,6 @@ namespace Chapter_House.Migrations
                     b.Navigation("Book");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Core.Book", b =>
-                {
-                    b.Navigation("Discounts");
-
-                    b.Navigation("Genres");
-
-                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("Chapter_House.Entities.Core.Order", b =>

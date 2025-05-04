@@ -150,3 +150,155 @@ D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.IdentityModel.Prot
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 D:\Github Repository\Chapter House\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\appsettings.Development.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\appsettings.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\frontend\frontend\package-lock.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\frontend\frontend\package.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\package-lock.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\package.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Chapter House.staticwebassets.endpoints.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Chapter House.exe
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Chapter House.deps.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Chapter House.runtimeconfig.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Chapter House.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Chapter House.pdb
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\BCrypt.Net-Next.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Humanizer.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.Build.Locator.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Microsoft.OpenApi.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Mono.TextTemplating.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Npgsql.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\System.CodeDom.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\System.Composition.Convention.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\System.Composition.Hosting.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\System.Composition.Runtime.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\System.Composition.TypedParts.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\System.IO.Pipelines.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\System.Text.Json.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\Chapter House.csproj.AssemblyReference.cache
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\Chapter House.GeneratedMSBuildEditorConfig.editorconfig
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\Chapter House.AssemblyInfoInputs.cache
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\Chapter House.AssemblyInfo.cs
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\Chapter House.csproj.CoreCompileInputs.cache
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\Chapter House.MvcApplicationPartsAssemblyInfo.cs
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\Chapter House.MvcApplicationPartsAssemblyInfo.cache
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\Chapter House.sourcelink.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\scopedcss\bundle\Chapter House.styles.css
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\staticwebassets.build.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\staticwebassets.development.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\staticwebassets\msbuild.Chapter House.Microsoft.AspNetCore.StaticWebAssets.props
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\staticwebassets\msbuild.Chapter House.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\staticwebassets\msbuild.build.Chapter House.props
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Chapter House.props
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Chapter House.props
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\staticwebassets.pack.json
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\Chapter .12C06A35.Up2Date
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\Chapter House.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\refint\Chapter House.dll
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\Chapter House.pdb
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\Chapter House.genruntimeconfig.cache
+E:\College Files\Year 3\Application Development\Final Semester\Chapter-House\obj\Debug\net8.0\ref\Chapter House.dll

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Github Repository\\Chapter House\\Chapter House.csproj": {}
+    "E:\\College Files\\Year 3\\Application Development\\Final Semester\\Chapter-House\\Chapter House.csproj": {}
   },
   "projects": {
-    "D:\\Github Repository\\Chapter House\\Chapter House.csproj": {
+    "E:\\College Files\\Year 3\\Application Development\\Final Semester\\Chapter-House\\Chapter House.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Github Repository\\Chapter House\\Chapter House.csproj",
+        "projectUniqueName": "E:\\College Files\\Year 3\\Application Development\\Final Semester\\Chapter-House\\Chapter House.csproj",
         "projectName": "Chapter House",
-        "projectPath": "D:\\Github Repository\\Chapter House\\Chapter House.csproj",
-        "packagesPath": "C:\\Users\\AvianaPhoenix\\.nuget\\packages\\",
-        "outputPath": "D:\\Github Repository\\Chapter House\\obj\\",
+        "projectPath": "E:\\College Files\\Year 3\\Application Development\\Final Semester\\Chapter-House\\Chapter House.csproj",
+        "packagesPath": "C:\\Users\\shasw\\.nuget\\packages\\",
+        "outputPath": "E:\\College Files\\Year 3\\Application Development\\Final Semester\\Chapter-House\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\AvianaPhoenix\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shasw\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -97,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
