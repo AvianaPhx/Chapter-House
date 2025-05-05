@@ -1,9 +1,5 @@
 D:\Github Repository\Chapter House\bin\Debug\net8.0\appsettings.Development.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\appsettings.json
-D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\package-lock.json
-D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\package.json
-D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\public\manifest.json
-D:\Github Repository\Chapter House\bin\Debug\net8.0\frontend\tsconfig.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.staticwebassets.endpoints.json
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.exe
 D:\Github Repository\Chapter House\bin\Debug\net8.0\Chapter House.deps.json

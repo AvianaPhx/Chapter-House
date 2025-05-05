@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "Chapter_House.Controllers.PublisherController",
+    "Method": "GetPublisherById",
+    "RelativePath": "{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Chapter_House.Controllers.AuthController",
     "Method": "SignIn",
     "RelativePath": "api/Auth/signin",
