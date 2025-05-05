@@ -16,8 +16,30 @@ namespace Chapter_House.DTO.Books
         [Column(TypeName = "decimal(10,2)")]
         public decimal Price { get; set; }
 
+        [StringLength(13, MinimumLength = 13)]
+        public required string Isbn { get; set; }
+
+        [Required]
         public int Stock { get; set; }
+
+        public bool OnSale { get; set; }
+
         public DateTime Published { get; set; }
-        public DateTime ListedAt { get; set; } = DateTime.UtcNow;
+
+        [Column(TypeName = "decimal(10,2)")]
+        public decimal DiscountedPrice { get; set; }
+
+
+        // Foreign Key for Genre
+        [Required]
+        public int GenreId { get; set; }
+
+        // Foreign Key for Format
+        [Required]
+        public int FormatId { get; set; }
+
+        // Foreign Key for Publisher
+        [Required]
+        public int PublisherId { get; set; }
     }
 }

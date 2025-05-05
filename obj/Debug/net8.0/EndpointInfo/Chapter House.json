@@ -72,6 +72,26 @@
         "tags": [
           "Book"
         ],
+        "parameters": [
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -198,6 +218,11 @@
       "AddBookDto": {
         "required": [
           "author",
+          "formatId",
+          "genreId",
+          "isbn",
+          "publisherId",
+          "stock",
           "title"
         ],
         "type": "object",
@@ -216,17 +241,38 @@
             "type": "number",
             "format": "double"
           },
+          "isbn": {
+            "maxLength": 13,
+            "minLength": 13,
+            "type": "string",
+            "nullable": true
+          },
           "stock": {
             "type": "integer",
             "format": "int32"
+          },
+          "onSale": {
+            "type": "boolean"
           },
           "published": {
             "type": "string",
             "format": "date-time"
           },
-          "listedAt": {
-            "type": "string",
-            "format": "date-time"
+          "discountedPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "genreId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "formatId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "publisherId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

@@ -4,10 +4,10 @@ namespace Chapter_House.Entities
 {
     public class Banner
     {
-        [Key] 
+        [Key]
         public int Id { get; set; }
 
-        [Required, MaxLength(150)] 
+        [Required, MaxLength(150)]
         public string Title { get; set; } = string.Empty;
 
         public string Message { get; set; } = string.Empty;

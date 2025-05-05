@@ -14,9 +14,12 @@ namespace Chapter_House.Controllers
         public BookController(ApplicationDbContext db) => dbContext = db;
 
         [HttpGet]
-        public IActionResult GetAllBooks()
+        public IActionResult GetAllBooks([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
-            var allBooks = dbContext.Books.ToList();
+            var allBooks = dbContext.Books
+                                    .Skip((pageNumber - 1) * pageSize)
+                                    .Take(pageSize)
+                                    .ToList();
 
             return Ok(allBooks);
         }
@@ -38,20 +41,36 @@ namespace Chapter_House.Controllers
         [HttpPost]
         public IActionResult AddBooks(AddBookDto addBookDto)
         {
+            var genre = dbContext.BookGenres.Find(addBookDto.GenreId);
+            var format = dbContext.BookFormats.Find(addBookDto.FormatId);
+            var publisher = dbContext.BookPublishers.Find(addBookDto.PublisherId);
+
+            if (genre == null || format == null || publisher == null)
+            {
+                return NotFound("Genre, Format, or Publisher not found.");
+            }
+
             var bookEntity = new Book()
             {
                 Title = addBookDto.Title,
                 Author = addBookDto.Author,
-                ListedAt = addBookDto.ListedAt,
                 Price = addBookDto.Price,
+                Isbn = addBookDto.Isbn,
                 Stock = addBookDto.Stock,
-                Published = addBookDto.Published
+                Published = addBookDto.Published,
+                DiscountedPrice = addBookDto.DiscountedPrice,
+                GenreId = addBookDto.GenreId,
+                FormatId = addBookDto.FormatId,
+                PublisherId = addBookDto.PublisherId,
+                Genre = genre,
+                Format = format,
+                Publisher = publisher
             };
 
             dbContext.Books.Add(bookEntity);
             dbContext.SaveChanges();
 
-            return Ok(bookEntity);
+            return CreatedAtAction(nameof(GetBookById), new { id = bookEntity.Id }, bookEntity);
         }
 
         [HttpPut]

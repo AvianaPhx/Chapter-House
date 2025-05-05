@@ -8,7 +8,7 @@ namespace Chapter_House.Entities
         [Key]
         public int Id { get; set; }
 
-        [Range(1,5)]
+        [Range(1, 5)]
         public int Rating { get; set; }
 
         public string Comment { get; set; } = string.Empty;
@@ -18,7 +18,7 @@ namespace Chapter_House.Entities
         /* Foreign Keys */
         public int BookId { get; set; }
         public Book Book { get; set; } = null!;
-        public long UserId { get; set; }
+        public int UserId { get; set; }
         public User User { get; set; } = null!;
     }
 }
