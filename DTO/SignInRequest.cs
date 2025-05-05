@@ -11,8 +11,5 @@ namespace Chapter_House.DTO
 
         [Required, MinLength(6), MaxLength(100)]
         public string Password { get; init; } = string.Empty;
-
-        [Required]
-        public Role Role { get; set; }
     }
 }

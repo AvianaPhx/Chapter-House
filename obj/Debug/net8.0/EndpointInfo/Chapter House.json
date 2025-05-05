@@ -231,20 +231,10 @@
         },
         "additionalProperties": false
       },
-      "Role": {
-        "enum": [
-          0,
-          1,
-          2
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
       "SignInRequest": {
         "required": [
           "email",
-          "password",
-          "role"
+          "password"
         ],
         "type": "object",
         "properties": {
@@ -257,9 +247,6 @@
             "maxLength": 100,
             "minLength": 6,
             "type": "string"
-          },
-          "role": {
-            "$ref": "#/components/schemas/Role"
           }
         },
         "additionalProperties": false

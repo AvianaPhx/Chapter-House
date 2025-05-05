@@ -8,5 +8,6 @@
 
         public string? AccessToken { get; init; }
         public DateTime? ExpiresAt { get; init; }
+        public int Role { get; init; }
     }
 }

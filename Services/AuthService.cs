@@ -60,7 +60,7 @@ namespace Chapter_House.Services
 
         public async Task<SignInResponse> SignInAsync(SignInRequest req)
         {
-            var user = await _db.Users.SingleOrDefaultAsync(u => u.Email == req.Email && u.Role == req.Role);
+            var user = await _db.Users.SingleOrDefaultAsync(u => u.Email == req.Email);
             if (user is null || !BCrypt.Net.BCrypt.Verify(req.Password, user.PasswordHash))
             {
                 return new SignInResponse
