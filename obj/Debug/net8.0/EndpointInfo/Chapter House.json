@@ -212,8 +212,110 @@
         }
       }
     },
-    "/{id}": {
+    "/api/Publisher": {
       "get": {
+        "tags": [
+          "Publisher"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Publisher"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPublisherDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPublisherDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPublisherDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Publisher/{id}": {
+      "get": {
+        "tags": [
+          "Publisher"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Publisher"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePublisherDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePublisherDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePublisherDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
         "tags": [
           "Publisher"
         ],
@@ -296,6 +398,20 @@
           "publisherId": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddPublisherDto": {
+        "required": [
+          "publisherName"
+        ],
+        "type": "object",
+        "properties": {
+          "publisherName": {
+            "maxLength": 150,
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -388,6 +504,20 @@
           "stock": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdatePublisherDto": {
+        "required": [
+          "publisherName"
+        ],
+        "type": "object",
+        "properties": {
+          "publisherName": {
+            "maxLength": 150,
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false
