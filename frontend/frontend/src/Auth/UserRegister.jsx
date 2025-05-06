@@ -65,7 +65,6 @@ export default function Register() {
     try {
       console.log("Registration data:", formData)
 
-      // Send all fields including confirmPassword
       const response = await axios.post("https://localhost:7227/api/Auth/signup", {
         UserName: formData.username,
         Email: formData.email,
@@ -74,12 +73,10 @@ export default function Register() {
       })
 
       console.log(response.data)
-      alert("Registration successful! Please login.")
-      // navigate('/login'); // Uncomment to redirect after success
+      alert("register bhayo ")
     } catch (err) {
       console.error("Registration error:", err)
       if (err.response?.data?.errors) {
-        // Map backend errors to frontend error state
         const backendErrors = err.response.data.errors
         setErrors({
           username: backendErrors.UserName?.[0],
@@ -100,14 +97,12 @@ export default function Register() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
       <header className="py-4 shadow-sm">
         <div className="container mx-auto px-4">
           <h1 className="text-center text-xl font-medium">ChapterHouse</h1>
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="flex-grow flex items-center justify-center px-4">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">

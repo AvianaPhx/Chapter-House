@@ -16,10 +16,9 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      // Replace with your actual authentication logic
+      // authentication logic yeta
       console.log('Login attempt with:', { email, password });
       
-      // Simulate API call
       const response = await axios.post("https://localhost:7227/api/Auth/signin", {email, password} )
       
       if (!email || !password) {
@@ -27,7 +26,7 @@ export default function Login() {
       }
       
       if (response.data && response.data.isSuccess) {
-        navigate("/"); 
+        navigate("/home"); 
 
       } else {
         setError("Credentials Milena");
@@ -41,14 +40,12 @@ export default function Login() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
       <header className="py-4 shadow-sm">
         <div className="container px-4">
           <h1 className="text-center text-xl font-medium">ChapterHouse</h1>
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="flex-grow flex items-center justify-center px-4">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
