@@ -5,6 +5,6 @@ namespace Chapter_House.DTO.Format
     public class UpdateFormatDto
     {
         [Required]
-        public required string Format { get; set; }
+        public required string FormatName { get; set; }
     }
 }

@@ -41,7 +41,7 @@ namespace Chapter_House.Controllers
         {
             var formatEntity = new BookFormat
             {
-                FormatName = addFormatDto.Format,
+                FormatName = addFormatDto.FormatName,
                 Books = new List<Book>()
             };
 
@@ -49,6 +49,41 @@ namespace Chapter_House.Controllers
             dbContext.SaveChanges();
 
             return CreatedAtAction(nameof(GetFormatById), new { id = formatEntity.Id }, formatEntity);
+        }
+
+        [HttpPut]
+        [Route("{id:int}")]
+        public IActionResult UpdateFormat(int id, UpdateFormatDto updateFormatDto)
+        {
+            var format = dbContext.BookFormats.Find(id);
+
+            if(format is null)
+            {
+                return NotFound();
+            }
+
+            format.FormatName = updateFormatDto.FormatName;
+
+            dbContext.SaveChanges();
+
+            return Ok(format);
+        }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public IActionResult DeleteFormat(int id)
+        {
+            var format = dbContext.BookFormats.Find(id);
+
+            if(format is null)
+            {
+                return NotFound();
+            }
+
+            dbContext.BookFormats.Remove(format);
+            dbContext.SaveChanges();
+
+            return Ok(format);
         }
     }
 }

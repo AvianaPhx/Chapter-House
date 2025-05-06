@@ -1,6 +1,7 @@
 ﻿using Chapter_House.Entities.Lookup;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Chapter_House.Entities.Core
 {
@@ -35,25 +36,29 @@ namespace Chapter_House.Entities.Core
         [Required]
         [ForeignKey(nameof(BookGenre))]
         public int GenreId { get; set; }
-        public required BookGenre Genre { get; set; }
+        [JsonIgnore]
+        public BookGenre? Genre { get; set; }
 
 
         [Required]
         [ForeignKey(nameof(BookFormat))]
         public int FormatId { get; set; }
-        public required BookFormat Format { get; set; }
+        [JsonIgnore]
+        public BookFormat? Format { get; set; }
 
-
+        
         [Required]
         [ForeignKey(nameof(BookPublisher))]
         public int PublisherId { get; set; }
-        public required BookPublisher Publisher { get; set; }
+        [JsonIgnore]
+        public BookPublisher? Publisher { get; set; }
 
 
         [Required]
         [ForeignKey(nameof(BookAuthor))]
         public int AuthorId { get; set; }
-        public required BookAuthor Author { get; set; }
-        
+        [JsonIgnore]
+        public BookAuthor? Author { get; set; }
+
     }
 }

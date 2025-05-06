@@ -47,10 +47,14 @@ namespace Chapter_House.Controllers
             var publisher = dbContext.BookPublishers.Find(addBookDto.PublisherId);
             var author = dbContext.BookAuthors.Find(addBookDto.AuthorId);
 
-            if (genre == null || format == null || publisher == null || author == null)
-            {
-                return NotFound("Genre, Format, or Publisher not found.");
-            }
+            if (genre == null)
+                return NotFound($"Genre with ID {addBookDto.GenreId} not found.");
+            if (format == null)
+                return NotFound($"Format with ID {addBookDto.FormatId} not found.");
+            if (publisher == null)
+                return NotFound($"Publisher with ID {addBookDto.PublisherId} not found.");
+            if (author == null)
+                return NotFound($"Author with ID {addBookDto.AuthorId} not found.");
 
             var bookEntity = new Book()
             {
@@ -126,7 +130,6 @@ namespace Chapter_House.Controllers
             dbContext.SaveChanges();
 
             return Ok(book);
-
         }
     }
 }

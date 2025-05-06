@@ -32,6 +32,85 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Chapter_House.Controllers.AuthorController",
+    "Method": "GetAllAuthor",
+    "RelativePath": "api/Author",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Chapter_House.Controllers.AuthorController",
+    "Method": "AddAuthor",
+    "RelativePath": "api/Author",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addAuthorDto",
+        "Type": "Chapter_House.DTO.Author.AddAuthorDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Chapter_House.Controllers.AuthorController",
+    "Method": "GetAuthorById",
+    "RelativePath": "api/Author/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Chapter_House.Controllers.AuthorController",
+    "Method": "UpdateAuthor",
+    "RelativePath": "api/Author/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateAuthorDto",
+        "Type": "Chapter_House.DTO.Author.UpdateAuthorDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Chapter_House.Controllers.AuthorController",
+    "Method": "DeleteAuthor",
+    "RelativePath": "api/Author/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Chapter_House.Controllers.BookController",
     "Method": "GetAllBooks",
     "RelativePath": "api/Book",
@@ -152,6 +231,43 @@
     "Method": "GetFormatById",
     "RelativePath": "api/Format/{id}",
     "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Chapter_House.Controllers.FormatController",
+    "Method": "UpdateFormat",
+    "RelativePath": "api/Format/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateFormatDto",
+        "Type": "Chapter_House.DTO.Format.UpdateFormatDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Chapter_House.Controllers.FormatController",
+    "Method": "DeleteFormat",
+    "RelativePath": "api/Format/{id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
