@@ -9,6 +9,10 @@ import HomePage from './Main/HomePage';
 import BookDetail from './Main/BookDetail';
 import Cart from './Main/Cart';
 import Bookmark from './Main/Bookmark';
+import AdminPage from './Admin/AdminPage';
+import BookManagementPage from './Admin/ManageDiscount';
+import Announcement from './Admin/Announcement';
+import OrderHistory from './Main/OrderHistory';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -25,6 +29,13 @@ function App() {
         <Route path="/book" element={<BookDetail />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/bookmarks" element={<Bookmark />} />
+        <Route path="/orderhistory" element={<OrderHistory />} />
+
+
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/announcement" element={<Announcement />} />
+        <Route path="/discount" element={<BookManagementPage />} />
+
       </Routes>
     </Router>
     </>
