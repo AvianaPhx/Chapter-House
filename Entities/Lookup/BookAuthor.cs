@@ -3,13 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Chapter_House.Entities.Lookup
 {
-    public class BookFormat
+    public class BookAuthor
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
-        public required string FormatName { get; set; }
+        public required string AuthorName { get; set; }
 
         public ICollection<Book>? Books { get; set; }
     }

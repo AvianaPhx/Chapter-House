@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Chapter_House.Entities.Core;
+using System.ComponentModel.DataAnnotations;
 
 namespace Chapter_House.Entities.Lookup
 {
@@ -9,5 +10,7 @@ namespace Chapter_House.Entities.Lookup
 
         [Required, MaxLength(150)]
         public string PublisherName { get; set; } = string.Empty;
+
+        public ICollection<Book>? Books { get; set; }
     }
 }

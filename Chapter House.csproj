@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Entities\Commerce\" />
     <Folder Include="Repo\" />
   </ItemGroup>
 

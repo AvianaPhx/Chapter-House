@@ -1,6 +1,6 @@
 ﻿using Chapter_House.Entities;
+using Chapter_House.Entities.Core;
 using System.ComponentModel.DataAnnotations;
-using static Chapter_House.Entities.Enums.Helpers;
 
 namespace Chapter_House.DTO.SignIn
 {

@@ -2,6 +2,7 @@
 using Chapter_House.Entities.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata;
 
 namespace Chapter_House.Controllers
 {
@@ -44,8 +45,9 @@ namespace Chapter_House.Controllers
             var genre = dbContext.BookGenres.Find(addBookDto.GenreId);
             var format = dbContext.BookFormats.Find(addBookDto.FormatId);
             var publisher = dbContext.BookPublishers.Find(addBookDto.PublisherId);
+            var author = dbContext.BookAuthors.Find(addBookDto.AuthorId);
 
-            if (genre == null || format == null || publisher == null)
+            if (genre == null || format == null || publisher == null || author == null)
             {
                 return NotFound("Genre, Format, or Publisher not found.");
             }
@@ -53,18 +55,25 @@ namespace Chapter_House.Controllers
             var bookEntity = new Book()
             {
                 Title = addBookDto.Title,
-                Author = addBookDto.Author,
+                Description = addBookDto.Description,
                 Price = addBookDto.Price,
                 Isbn = addBookDto.Isbn,
                 Stock = addBookDto.Stock,
+                OnSale = addBookDto.OnSale,
                 Published = addBookDto.Published,
-                DiscountedPrice = addBookDto.DiscountedPrice,
+                ListedAt = addBookDto.ListedAt,
+                DiscountedPercentage = addBookDto.DiscountedPercentage,
+                DiscountStartDate = addBookDto.DiscountStartDate,
+                DiscountEndDate = addBookDto.DiscountEndDate,
+                Language = addBookDto.Language,
                 GenreId = addBookDto.GenreId,
                 FormatId = addBookDto.FormatId,
                 PublisherId = addBookDto.PublisherId,
+                AuthorId = addBookDto.AuthorId,
                 Genre = genre,
                 Format = format,
-                Publisher = publisher
+                Publisher = publisher,
+                Author = author
             };
 
             dbContext.Books.Add(bookEntity);
@@ -84,10 +93,18 @@ namespace Chapter_House.Controllers
                 return NotFound();
             }
 
-            book.Author = updateBookDto.Author;
             book.Title = updateBookDto.Title;
+            book.Description = updateBookDto.Description;
             book.Price = updateBookDto.Price;
+            book.Isbn = updateBookDto.Isbn;
             book.Stock = updateBookDto.Stock;
+            book.OnSale = updateBookDto.OnSale;
+            book.Published = updateBookDto.Published;
+            book.DiscountedPercentage = updateBookDto.DiscountedPercentage;
+            book.TotalPrice = updateBookDto.TotalPrice;
+            book.DiscountStartDate = updateBookDto.DiscountStartDate;
+            book.DiscountEndDate = updateBookDto.DiscountEndDate;
+            book.Language = updateBookDto.Language;
 
             dbContext.SaveChanges();
 

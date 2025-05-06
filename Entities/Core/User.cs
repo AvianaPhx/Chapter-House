@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.ComponentModel.DataAnnotations;
-using static Chapter_House.Entities.Enums.Helpers;
 
 namespace Chapter_House.Entities.Core
 {
@@ -29,8 +28,10 @@ namespace Chapter_House.Entities.Core
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        public ICollection<Order> Orders { get; set; } = new List<Order>();
-        public ICollection<Review> Reviews { get; set; } = new List<Review>();
+    }
 
+    public enum Role
+    {
+        User = 0, Staff = 1, Admin = 2
     }
 }

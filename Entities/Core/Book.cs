@@ -1,6 +1,4 @@
-﻿
-using Chapter_House.Entities.Commerce;
-using Chapter_House.Entities.Lookup;
+﻿using Chapter_House.Entities.Lookup;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,24 +8,14 @@ namespace Chapter_House.Entities.Core
     {
         [Key]
         public int Id { get; set; }
-
-        [Required, MaxLength(150)]
-        public string Title { get; set; } = string.Empty;
-
-        [Required, MaxLength(150)]
-        public string Author { get; set; } = string.Empty;
-
-        [Column(TypeName = "decimal(10,2)")]
+        public string? Title { get; set; }
+        public string? Description { get; set; }
         public decimal Price { get; set; }
-
-        [StringLength(13, MinimumLength = 13)]
-        public required string Isbn { get; set; }
+        [StringLength(13, MinimumLength = 13)] public required string Isbn { get; set; }
 
         [Required]
         public int Stock { get; set; }
-
         public bool OnSale { get; set; }
-
         public DateTime Published { get; set; }
         public DateTime ListedAt { get; set; } = DateTime.UtcNow;
 
@@ -35,25 +23,37 @@ namespace Chapter_House.Entities.Core
         public decimal Rating { get; set; }
 
         [Column(TypeName = "decimal(10,2)")]
-        public decimal DiscountedPrice { get; set; }
+        public decimal DiscountedPercentage { get; set; }
+
+        public decimal TotalPrice { get; set; }
+
+        public DateTime DiscountStartDate { get; set; } // Either today or choose date from frontend
+        public DateTime DiscountEndDate { get; set; }
+        public string? Language { get; set; }
 
 
-        // Foreign Key Genre
         [Required]
+        [ForeignKey(nameof(BookGenre))]
         public int GenreId { get; set; }
         public required BookGenre Genre { get; set; }
 
-        // Foreign Key Format
+
         [Required]
+        [ForeignKey(nameof(BookFormat))]
         public int FormatId { get; set; }
         public required BookFormat Format { get; set; }
 
-        // Foreign Key Publisher
+
         [Required]
+        [ForeignKey(nameof(BookPublisher))]
         public int PublisherId { get; set; }
         public required BookPublisher Publisher { get; set; }
 
-        public ICollection<BookDiscount> BookDiscounts { get; set; } = new List<BookDiscount>();
-        public ICollection<Review> Reviews { get; set; } = new List<Review>();
+
+        [Required]
+        [ForeignKey(nameof(BookAuthor))]
+        public int AuthorId { get; set; }
+        public required BookAuthor Author { get; set; }
+        
     }
 }

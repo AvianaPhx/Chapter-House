@@ -1,5 +1,6 @@
 ﻿using Chapter_House.Entities.Core;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Chapter_House.Entities.Lookup
 {
@@ -11,6 +12,7 @@ namespace Chapter_House.Entities.Lookup
         [Required, MaxLength(100)]
         public string GenreName { get; set; } = string.Empty;
 
-        public required ICollection<Book> Books { get; set; } = new List<Book>();
+        [JsonIgnore]
+        public ICollection<Book>? Books { get; set; }
     }
 }

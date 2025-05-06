@@ -212,6 +212,70 @@
         }
       }
     },
+    "/api/Format": {
+      "get": {
+        "tags": [
+          "Format"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Format"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddFormatDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddFormatDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddFormatDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Format/{id}": {
+      "get": {
+        "tags": [
+          "Format"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Genre": {
       "get": {
         "tags": [
@@ -309,6 +373,27 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Genre"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -440,31 +525,36 @@
           }
         }
       }
+    },
+    "/api/User": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
       "AddBookDto": {
         "required": [
-          "author",
-          "formatId",
-          "genreId",
           "isbn",
-          "publisherId",
-          "stock",
-          "title"
+          "stock"
         ],
         "type": "object",
         "properties": {
           "title": {
-            "maxLength": 150,
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
-          "author": {
-            "maxLength": 150,
-            "minLength": 1,
-            "type": "string"
+          "description": {
+            "type": "string",
+            "nullable": true
           },
           "price": {
             "type": "number",
@@ -487,9 +577,29 @@
             "type": "string",
             "format": "date-time"
           },
-          "discountedPrice": {
+          "listedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "discountedPercentage": {
             "type": "number",
             "format": "double"
+          },
+          "totalPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "discountStartDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "discountEndDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "language": {
+            "type": "string",
+            "nullable": true
           },
           "genreId": {
             "type": "integer",
@@ -502,6 +612,23 @@
           "publisherId": {
             "type": "integer",
             "format": "int32"
+          },
+          "authorId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddFormatDto": {
+        "required": [
+          "format"
+        ],
+        "type": "object",
+        "properties": {
+          "format": {
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -512,6 +639,10 @@
         ],
         "type": "object",
         "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
           "genreName": {
             "maxLength": 100,
             "minLength": 1,
@@ -600,26 +731,73 @@
       },
       "UpdateBookDto": {
         "required": [
-          "author",
-          "title"
+          "isbn",
+          "stock"
         ],
         "type": "object",
         "properties": {
           "title": {
-            "maxLength": 150,
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
-          "author": {
-            "maxLength": 150,
-            "minLength": 1,
-            "type": "string"
+          "description": {
+            "type": "string",
+            "nullable": true
           },
           "price": {
             "type": "number",
             "format": "double"
           },
+          "isbn": {
+            "maxLength": 13,
+            "minLength": 13,
+            "type": "string",
+            "nullable": true
+          },
           "stock": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "onSale": {
+            "type": "boolean"
+          },
+          "published": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "discountedPercentage": {
+            "type": "number",
+            "format": "double"
+          },
+          "totalPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "discountStartDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "discountEndDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "language": {
+            "type": "string",
+            "nullable": true
+          },
+          "genreId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "formatId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "publisherId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "authorId": {
             "type": "integer",
             "format": "int32"
           }
