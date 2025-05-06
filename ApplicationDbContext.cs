@@ -16,6 +16,7 @@ namespace Chapter_House
         /* Core */
         public DbSet<User> Users => Set<User>();
         public DbSet<Book> Books => Set<Book>();
+        public DbSet<Whitelist> Whitelists { get; set; }
 
 
         /* Lookup */

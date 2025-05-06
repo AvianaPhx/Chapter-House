@@ -578,5 +578,31 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Chapter_House.Controllers.WhitelistController",
+    "Method": "AddToWhitelist",
+    "RelativePath": "api/Whitelist",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addToWhitelistDto",
+        "Type": "Chapter_House.DTO.Whitelist.AddToWhitelistDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Chapter_House.Controllers.WhitelistController",
+    "Method": "GetWhitelistedBooks",
+    "RelativePath": "api/Whitelist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]
