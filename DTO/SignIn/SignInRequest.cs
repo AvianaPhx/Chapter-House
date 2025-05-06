@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using static Chapter_House.Entities.Enums.Helpers;
 
-namespace Chapter_House.DTO
+namespace Chapter_House.DTO.SignIn
 {
     public class SignInRequest
     {

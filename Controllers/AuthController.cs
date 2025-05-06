@@ -1,4 +1,5 @@
-﻿using Chapter_House.DTO;
+﻿using Chapter_House.DTO.SignIn;
+using Chapter_House.DTO.SignUp;
 using Chapter_House.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;

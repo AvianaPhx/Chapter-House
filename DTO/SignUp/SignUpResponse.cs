@@ -1,4 +1,4 @@
-﻿namespace Chapter_House.DTO
+﻿namespace Chapter_House.DTO.SignUp
 {
     public class SignUpResponse
     {

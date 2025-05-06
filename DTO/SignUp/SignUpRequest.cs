@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Chapter_House.DTO
+namespace Chapter_House.DTO.SignUp
 {
     public class SignUpRequest
     {

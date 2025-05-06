@@ -1,5 +1,4 @@
-﻿using Chapter_House.DTO;
-using Chapter_House.Entities;
+﻿using Chapter_House.Entities;
 using Microsoft.EntityFrameworkCore;
 using BCrypt.Net;
 using System.Runtime.CompilerServices;
@@ -9,6 +8,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
+using Chapter_House.DTO.SignIn;
+using Chapter_House.DTO.SignUp;
 
 namespace Chapter_House.Services
 {

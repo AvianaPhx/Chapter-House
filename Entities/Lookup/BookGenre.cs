@@ -11,6 +11,6 @@ namespace Chapter_House.Entities.Lookup
         [Required, MaxLength(100)]
         public string GenreName { get; set; } = string.Empty;
 
-        public required ICollection<Book> Books { get; set; }
+        public required ICollection<Book> Books { get; set; } = new List<Book>();
     }
 }

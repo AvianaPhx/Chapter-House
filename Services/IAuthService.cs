@@ -1,4 +1,5 @@
-﻿using Chapter_House.DTO;
+﻿using Chapter_House.DTO.SignIn;
+using Chapter_House.DTO.SignUp;
 
 namespace Chapter_House.Services
 {
