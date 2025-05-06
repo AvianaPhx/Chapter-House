@@ -28,6 +28,6 @@ namespace Chapter_House
 
 
         /* Social / Marketing */
-
+        public DbSet<Banner> Banners => Set<Banner>();
     }
 }
