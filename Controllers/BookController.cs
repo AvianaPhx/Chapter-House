@@ -14,13 +14,23 @@ namespace Chapter_House.Controllers
 
         public BookController(ApplicationDbContext db) => dbContext = db;
 
+
+
         [HttpGet]
-        public IActionResult GetAllBooks([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+        public IActionResult GetAllBooks([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10, [FromQuery] string search = "")
         {
-            var allBooks = dbContext.Books
-                                    .Skip((pageNumber - 1) * pageSize)
-                                    .Take(pageSize)
-                                    .ToList();
+            var query = dbContext.Books.AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(b => b.Title.Contains(search) ||
+                                 b.Description.Contains(search));
+            }
+
+            var allBooks = query
+                            .Skip((pageNumber - 1) * pageSize)
+                            .Take(pageSize)
+                            .ToList();
 
             return Ok(allBooks);
         }

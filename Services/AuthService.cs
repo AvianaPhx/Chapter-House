@@ -89,10 +89,11 @@ namespace Chapter_House.Services
 
             var claims = new[]
             {
-            new Claim(JwtRegisteredClaimNames.Sub,  user.Id.ToString()),
-            new Claim(JwtRegisteredClaimNames.Email,user.Email),
-            new Claim(ClaimTypes.Role,              user.Role.ToString())
-        };
+                new Claim(JwtRegisteredClaimNames.Sub,  user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email,user.Email),
+                new Claim(ClaimTypes.Role,              user.Role.ToString()),
+                new Claim("id", user.Id.ToString())
+            };
 
             var expires = DateTime.UtcNow.AddHours(_jwt.ExpiryHours);
 

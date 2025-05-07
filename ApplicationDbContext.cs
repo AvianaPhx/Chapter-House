@@ -17,6 +17,8 @@ namespace Chapter_House
         public DbSet<User> Users => Set<User>();
         public DbSet<Book> Books => Set<Book>();
         public DbSet<Whitelist> Whitelists { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
 
         /* Lookup */

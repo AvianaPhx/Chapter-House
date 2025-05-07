@@ -24,12 +24,12 @@ namespace Chapter_House.Entities.Core
         public decimal Rating { get; set; }
 
         [Column(TypeName = "decimal(10,2)")]
-        public decimal DiscountedPercentage { get; set; }
+        public decimal? DiscountedPercentage { get; set; }
 
-        public decimal TotalPrice { get; set; }
+        public decimal? TotalPrice { get; set; }
 
-        public DateTime DiscountStartDate { get; set; } // Either today or choose date from frontend
-        public DateTime DiscountEndDate { get; set; }
+        public DateTime? DiscountStartDate { get; set; } // Either today or choose date from frontend
+        public DateTime? DiscountEndDate { get; set; }
         public string? Language { get; set; }
 
 
