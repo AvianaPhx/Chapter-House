@@ -1,5 +1,4 @@
-﻿using Chapter_House.DTO;
-using Chapter_House.Entities;
+﻿using Chapter_House.Entities;
 using Microsoft.EntityFrameworkCore;
 using BCrypt.Net;
 using System.Runtime.CompilerServices;
@@ -9,6 +8,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
+using Chapter_House.DTO.SignIn;
+using Chapter_House.DTO.SignUp;
 
 namespace Chapter_House.Services
 {
@@ -60,7 +61,7 @@ namespace Chapter_House.Services
 
         public async Task<SignInResponse> SignInAsync(SignInRequest req)
         {
-            var user = await _db.Users.SingleOrDefaultAsync(u => u.Email == req.Email);
+            var user = await _db.Users.SingleOrDefaultAsync(u => u.Email == req.Email && u.Role == req.Role);
             if (user is null || !BCrypt.Net.BCrypt.Verify(req.Password, user.PasswordHash))
             {
                 return new SignInResponse
@@ -88,10 +89,11 @@ namespace Chapter_House.Services
 
             var claims = new[]
             {
-            new Claim(JwtRegisteredClaimNames.Sub,  user.Id.ToString()),
-            new Claim(JwtRegisteredClaimNames.Email,user.Email),
-            new Claim(ClaimTypes.Role,              user.Role.ToString())
-        };
+                new Claim(JwtRegisteredClaimNames.Sub,  user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email,user.Email),
+                new Claim(ClaimTypes.Role,              user.Role.ToString()),
+                new Claim("id", user.Id.ToString())
+            };
 
             var expires = DateTime.UtcNow.AddHours(_jwt.ExpiryHours);
 

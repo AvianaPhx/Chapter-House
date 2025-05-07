@@ -1,11 +1,24 @@
 ﻿namespace Chapter_House.Entities.Enums
 {
-    public class Helpers
+    public enum DiscountKind
     {
-        public enum Role { User = 0, Staff = 1, Admin = 2 }
+        Percentage, FixedAmount
+    }
 
-        public enum OrderStatus { Pending, Paid, Cancelled, Processing, Completed }
+    public enum Format
+    {
+        Paperback,
+        Hardcover,
+        Signed,
+        Limited,
+        FirstEdition,
+        Collectors,
+        AuthorsEdition,
+        Deluxe
+    }
 
-        public enum DiscountKind { Percentage, FixedAmount }
+    public enum OrderStatus
+    {
+        Pending, Paid, Cancelled, Processing, Completed
     }
 }

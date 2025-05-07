@@ -33,9 +33,6 @@ namespace Chapter_House.Migrations
                     b.Property<DateTime>("Ends")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("text");
-
                     b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnType("text");
@@ -53,146 +50,6 @@ namespace Chapter_House.Migrations
                     b.ToTable("Banners");
                 });
 
-            modelBuilder.Entity("Chapter_House.Entities.Bridge.BookAward", b =>
-                {
-                    b.Property<int>("BookId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("AwardId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("BookId", "AwardId");
-
-                    b.HasIndex("AwardId");
-
-                    b.ToTable("BookAwards");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Bridge.BookGenre", b =>
-                {
-                    b.Property<int>("BookId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("GenreId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("BookId", "GenreId");
-
-                    b.HasIndex("GenreId");
-
-                    b.ToTable("BookGenres");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Commerce.CartItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("UserId", "BookId")
-                        .IsUnique();
-
-                    b.ToTable("CartItems");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Commerce.Discount", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("EndsUtc")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<bool>("OnSaleFlag")
-                        .HasColumnType("boolean");
-
-                    b.Property<decimal>("PerfectOff")
-                        .HasColumnType("numeric");
-
-                    b.Property<DateTime>("StartsUtc")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.ToTable("Discounts");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Commerce.OrderItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("UnitPrice")
-                        .HasColumnType("numeric");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("OrderItems");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Commerce.Whitelist", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("UserId", "BookId")
-                        .IsUnique();
-
-                    b.ToTable("Whitelists");
-                });
-
             modelBuilder.Entity("Chapter_House.Entities.Core.Book", b =>
                 {
                     b.Property<int>("Id")
@@ -201,55 +58,82 @@ namespace Chapter_House.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Author")
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("DiscountEndDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("DiscountStartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<decimal?>("DiscountedPercentage")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<int>("FormatId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("GenreId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Isbn")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("character varying(150)");
+                        .HasMaxLength(13)
+                        .HasColumnType("character varying(13)");
+
+                    b.Property<string>("Language")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("ListedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<bool>("OnSale")
+                        .HasColumnType("boolean");
+
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(10,2)");
+                        .HasColumnType("numeric");
 
                     b.Property<DateTime>("Published")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("PublisherId")
+                    b.Property<int>("PublisherId")
                         .HasColumnType("integer");
+
+                    b.Property<decimal>("Rating")
+                        .HasColumnType("numeric");
 
                     b.Property<int>("Stock")
                         .HasColumnType("integer");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("character varying(150)");
+                        .HasColumnType("text");
+
+                    b.Property<decimal?>("TotalPrice")
+                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("FormatId");
+
+                    b.HasIndex("GenreId");
 
                     b.HasIndex("PublisherId");
 
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("Chapter_House.Entities.Core.Order", b =>
+            modelBuilder.Entity("Chapter_House.Entities.Core.Cart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("Cancelled")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("ClaimCode")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedUtc")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
@@ -258,7 +142,33 @@ namespace Chapter_House.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("Chapter_House.Entities.Core.CartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("CartId");
+
+                    b.ToTable("CartItems");
                 });
 
             modelBuilder.Entity("Chapter_House.Entities.Core.User", b =>
@@ -300,69 +210,7 @@ namespace Chapter_House.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Chapter_House.Entities.Lookup.Award", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Awards");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Lookup.Genre", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("character varying(60)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("Genres");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Lookup.Publisher", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(120)
-                        .HasColumnType("character varying(120)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("Publishers");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Review", b =>
+            modelBuilder.Entity("Chapter_House.Entities.Core.Whitelist", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -373,73 +221,154 @@ namespace Chapter_House.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Comment")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("integer");
-
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<int>("UserId1")
+                    b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BookId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
-                    b.HasIndex("UserId", "BookId")
-                        .IsUnique();
-
-                    b.ToTable("Reviews");
+                    b.ToTable("Whitelists");
                 });
 
-            modelBuilder.Entity("Chapter_House.Entities.Bridge.BookAward", b =>
+            modelBuilder.Entity("Chapter_House.Entities.Lookup.BookAuthor", b =>
                 {
-                    b.HasOne("Chapter_House.Entities.Lookup.Award", "Award")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BookAuthors");
+                });
+
+            modelBuilder.Entity("Chapter_House.Entities.Lookup.BookFormat", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FormatName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BookFormats");
+                });
+
+            modelBuilder.Entity("Chapter_House.Entities.Lookup.BookGenre", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("GenreName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BookGenres");
+                });
+
+            modelBuilder.Entity("Chapter_House.Entities.Lookup.BookPublisher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PublisherName")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("character varying(150)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BookPublishers");
+                });
+
+            modelBuilder.Entity("Chapter_House.Entities.Core.Book", b =>
+                {
+                    b.HasOne("Chapter_House.Entities.Lookup.BookAuthor", "Author")
                         .WithMany("Books")
-                        .HasForeignKey("AwardId")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Chapter_House.Entities.Core.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId")
+                    b.HasOne("Chapter_House.Entities.Lookup.BookFormat", "Format")
+                        .WithMany("Books")
+                        .HasForeignKey("FormatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Award");
-
-                    b.Navigation("Book");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Bridge.BookGenre", b =>
-                {
-                    b.HasOne("Chapter_House.Entities.Core.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Chapter_House.Entities.Lookup.Genre", "Genre")
+                    b.HasOne("Chapter_House.Entities.Lookup.BookGenre", "Genre")
                         .WithMany("Books")
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Book");
+                    b.HasOne("Chapter_House.Entities.Lookup.BookPublisher", "Publisher")
+                        .WithMany("Books")
+                        .HasForeignKey("PublisherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Format");
 
                     b.Navigation("Genre");
+
+                    b.Navigation("Publisher");
                 });
 
-            modelBuilder.Entity("Chapter_House.Entities.Commerce.CartItem", b =>
+            modelBuilder.Entity("Chapter_House.Entities.Core.Cart", b =>
+                {
+                    b.HasOne("Chapter_House.Entities.Core.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Chapter_House.Entities.Core.CartItem", b =>
+                {
+                    b.HasOne("Chapter_House.Entities.Core.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Chapter_House.Entities.Core.Cart", "Cart")
+                        .WithMany("CartItems")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Cart");
+                });
+
+            modelBuilder.Entity("Chapter_House.Entities.Core.Whitelist", b =>
                 {
                     b.HasOne("Chapter_House.Entities.Core.Book", "Book")
                         .WithMany()
@@ -458,108 +387,27 @@ namespace Chapter_House.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Chapter_House.Entities.Commerce.Discount", b =>
+            modelBuilder.Entity("Chapter_House.Entities.Core.Cart", b =>
                 {
-                    b.HasOne("Chapter_House.Entities.Core.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
+                    b.Navigation("CartItems");
                 });
 
-            modelBuilder.Entity("Chapter_House.Entities.Commerce.OrderItem", b =>
-                {
-                    b.HasOne("Chapter_House.Entities.Core.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Chapter_House.Entities.Core.Order", "Order")
-                        .WithMany("Items")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Commerce.Whitelist", b =>
-                {
-                    b.HasOne("Chapter_House.Entities.Core.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Chapter_House.Entities.Core.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Core.Book", b =>
-                {
-                    b.HasOne("Chapter_House.Entities.Lookup.Publisher", null)
-                        .WithMany("Books")
-                        .HasForeignKey("PublisherId");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Core.Order", b =>
-                {
-                    b.HasOne("Chapter_House.Entities.Core.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Review", b =>
-                {
-                    b.HasOne("Chapter_House.Entities.Core.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Chapter_House.Entities.Core.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Core.Order", b =>
-                {
-                    b.Navigation("Items");
-                });
-
-            modelBuilder.Entity("Chapter_House.Entities.Lookup.Award", b =>
+            modelBuilder.Entity("Chapter_House.Entities.Lookup.BookAuthor", b =>
                 {
                     b.Navigation("Books");
                 });
 
-            modelBuilder.Entity("Chapter_House.Entities.Lookup.Genre", b =>
+            modelBuilder.Entity("Chapter_House.Entities.Lookup.BookFormat", b =>
                 {
                     b.Navigation("Books");
                 });
 
-            modelBuilder.Entity("Chapter_House.Entities.Lookup.Publisher", b =>
+            modelBuilder.Entity("Chapter_House.Entities.Lookup.BookGenre", b =>
+                {
+                    b.Navigation("Books");
+                });
+
+            modelBuilder.Entity("Chapter_House.Entities.Lookup.BookPublisher", b =>
                 {
                     b.Navigation("Books");
                 });

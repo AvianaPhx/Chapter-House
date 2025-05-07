@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\College Files\\Year 3\\Application Development\\Final Semester\\Chapter-House\\Chapter House.csproj": {}
+    "C:\\Users\\shasw\\Downloads\\Chapter-House-Arabinda\\Chapter-House-Arabinda\\Chapter House.csproj": {}
   },
   "projects": {
-    "E:\\College Files\\Year 3\\Application Development\\Final Semester\\Chapter-House\\Chapter House.csproj": {
+    "C:\\Users\\shasw\\Downloads\\Chapter-House-Arabinda\\Chapter-House-Arabinda\\Chapter House.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\College Files\\Year 3\\Application Development\\Final Semester\\Chapter-House\\Chapter House.csproj",
+        "projectUniqueName": "C:\\Users\\shasw\\Downloads\\Chapter-House-Arabinda\\Chapter-House-Arabinda\\Chapter House.csproj",
         "projectName": "Chapter House",
-        "projectPath": "E:\\College Files\\Year 3\\Application Development\\Final Semester\\Chapter-House\\Chapter House.csproj",
+        "projectPath": "C:\\Users\\shasw\\Downloads\\Chapter-House-Arabinda\\Chapter-House-Arabinda\\Chapter House.csproj",
         "packagesPath": "C:\\Users\\shasw\\.nuget\\packages\\",
-        "outputPath": "E:\\College Files\\Year 3\\Application Development\\Final Semester\\Chapter-House\\obj\\",
+        "outputPath": "C:\\Users\\shasw\\Downloads\\Chapter-House-Arabinda\\Chapter-House-Arabinda\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

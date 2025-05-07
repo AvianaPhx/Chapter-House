@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+dRrLkKKsDI=",
+  "dgSpecHash": "a6SB0y0cGGQ=",
   "success": true,
-  "projectFilePath": "E:\\College Files\\Year 3\\Application Development\\Final Semester\\Chapter-House\\Chapter House.csproj",
+  "projectFilePath": "C:\\Users\\shasw\\Downloads\\Chapter-House-Arabinda\\Chapter-House-Arabinda\\Chapter House.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\shasw\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\shasw\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
