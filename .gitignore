@@ -287,3 +287,74 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+*.log
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code + Rider
+.vscode/
+.idea/
+
+# ASP.NET temp files
+*.dbmdl
+*.dbproj.schemaview
+
+# Auto-generated files
+*.Generated.cs
+Generated_Code/
+
+# Publish folder
+publish/
+dist/
+out/
+
+# NuGet
+*.nupkg
+packages/
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Dotnet CLI
+.vs/
+*.vspscc
+*.vssscc
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Coverage and test results
+TestResults/
+*.coverage
+*.coveragexml
+*.code-coverage
+*.lcov
+*.trx
+*.testsettings
+
+# SQLite or local db
+*.db
+*.sqlite
+
+# Config files with secrets (if you screw this up, enjoy the hack)
+appsettings.Development.json
+secrets.json
+
+# Others
+*.tmp
+*.bak
+*.swp
+*.sln.cache
+
