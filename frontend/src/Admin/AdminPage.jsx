@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { User, Check } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { User, Check, Pencil, Trash2, AlertCircle } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function AdminPage() {
@@ -20,6 +20,9 @@ export default function AdminPage() {
 
   const [errors, setErrors] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
+  const [books, setBooks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [bookId, setBookId] = useState(null); // To store the ID of the book being edited
   const location = useLocation();
   const activeButton = location.pathname === '/admin' ? 'add-book' :
                        location.pathname === '/announcement' ? 'announcement' :
@@ -36,17 +39,65 @@ export default function AdminPage() {
     { value: 'poetry', label: 'Poetry' }
   ];
 
+  // Fetch books from the database
+  const fetchBooks = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch('https://localhost:7227/api/book');
+      if (!response.ok) {
+        throw new Error('Failed to fetch books');
+      }
+      const data = await response.json();
+      setBooks(data);
+    } catch (error) {
+      console.error('Error fetching books:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Load books when component mounts
+  useEffect(() => {
+    fetchBooks();
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: null
+    
+    // Special handling for ISBN field
+    if (name === 'isbn') {
+      // Only allow digits
+      const digitsOnly = value.replace(/\D/g, '');
+      
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: digitsOnly
       }));
+      
+      // Validate ISBN length
+      if (digitsOnly.length > 0 && digitsOnly.length !== 13) {
+        setErrors(prev => ({
+          ...prev,
+          [name]: `ISBN must be exactly 13 digits. Current length: ${digitsOnly.length}`
+        }));
+      } else {
+        setErrors(prev => ({
+          ...prev,
+          [name]: null
+        }));
+      }
+    } else {
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+      
+      if (errors[name]) {
+        setErrors(prev => ({
+          ...prev,
+          [name]: null
+        }));
+      }
     }
   };
 
@@ -68,74 +119,147 @@ export default function AdminPage() {
   const validateForm = () => {
     const newErrors = {};
     const requiredFields = ['title', 'author', 'publisher', 'publicationDate', 'description', 'isbn', 'price', 'stock'];
+    
     requiredFields.forEach(field => {
       if (!formData[field]) {
         newErrors[field] = 'This field is required';
       }
     });
+    
+    // ISBN validation
+    if (formData.isbn && formData.isbn.length !== 13) {
+      newErrors.isbn = `ISBN must be exactly 13 digits. Current length: ${formData.isbn.length}`;
+    }
+    
     if (formData.genres.length === 0) {
       newErrors.genres = 'Please select at least one genre';
     }
+    
     if (!formData.format) {
       newErrors.format = 'Please select a format';
     }
+    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
-  if (e) e.preventDefault();
+    if (e) e.preventDefault();
 
-  if (validateForm()) {
-    try {
-      const payload = {
-        title: formData.title,
-        description: formData.description,
-        price: parseFloat(formData.price),
-        isbn: formData.isbn,
-        stock: parseInt(formData.stock),
-        onSale: formData.onSale,
-        published: new Date(formData.publicationDate).toISOString(),
-        listedAt: new Date().toISOString(),
-        discountedPercentage: formData.onSale ? parseFloat(formData.discount.replace('%', '')) : 0,
-        discountStartDate: formData.onSale ? new Date().toISOString() : new Date(0).toISOString(),
-        discountEndDate: formData.onSale
-          ? new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString()
-          : new Date(0).toISOString(),
-        language: "English",
-        genreName: formData.genres.join(', '),
-        formatName: formData.format,
-        authorName: formData.author,
-        publisherName: formData.publisher,
-      };
+    if (validateForm()) {
+      try {
+        const payload = {
+          title: formData.title,
+          description: formData.description,
+          price: parseFloat(formData.price),
+          isbn: formData.isbn,
+          stock: parseInt(formData.stock),
+          onSale: formData.onSale,
+          published: new Date(formData.publicationDate).toISOString(),
+          listedAt: new Date().toISOString(),
+          discountedPercentage: formData.onSale ? parseFloat(formData.discount.replace('%', '')) : 0,
+          discountStartDate: formData.onSale ? new Date().toISOString() : new Date(0).toISOString(),
+          discountEndDate: formData.onSale
+            ? new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString()
+            : new Date(0).toISOString(),
+          language: "English",
+          genreName: formData.genres.join(', '),
+          formatName: formData.format,
+          authorName: formData.author,
+          publisherName: formData.publisher,
+        };
 
-      // ✅ Debug output here
-      console.log("Sending payload:", JSON.stringify(payload, null, 2));
+        const res = await fetch(`https://localhost:7227/api/book/${bookId}`, {
+          method: "PUT",  // or PATCH, based on your backend setup
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
 
-      const res = await fetch("https://localhost:7227/api/book", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      });
+        if (!res.ok) throw new Error("Failed to update book");
 
-      if (!res.ok) throw new Error("Failed to add book");
+        setShowSuccess(true);
+        setTimeout(() => setShowSuccess(false), 3000);
 
-      setShowSuccess(true);
-      setTimeout(() => setShowSuccess(false), 3000);
-    } catch (error) {
-      console.error("Failed to upload book", error);
+        // Reset form
+        setFormData({
+          title: '',
+          author: '',
+          publisher: '',
+          publicationDate: '',
+          genres: [],
+          description: '',
+          isbn: '',
+          stock: '',
+          price: '',
+          format: '',
+          onSale: false,
+          discount: '10%',
+        });
+
+        // Refresh book list
+        fetchBooks();
+      } catch (error) {
+        console.error("Failed to upload book", error);
+      }
+    } else {
+      // Show error popup for ISBN if it's invalid
+      if (errors.isbn) {
+        alert(errors.isbn);
+      }
+      console.log("Form has errors");
     }
-  } else {
-    console.log("Form has errors");
-  }
-};
+  };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString();
+  }
+
+  const handleEditBook = async (book) => {
+    // Pre-fill form with selected book's data
+    setFormData({
+      title: book.title,
+      author: book.authorName,
+      publisher: book.publisherName,
+      publicationDate: book.published,
+      genres: book.genreName.split(", "), // Assuming genres are stored as a comma-separated string
+      description: book.description,
+      isbn: book.isbn,
+      stock: book.stock,
+      price: book.price,
+      format: book.formatName,
+      onSale: book.onSale,
+      discount: book.discountedPercentage ? `${book.discountedPercentage}%` : '10%',
+    });
+
+    // Set an ID to indicate the current book being edited
+    setBookId(book.id);
+  };
+
+  // Function to handle book deletion
+  const handleDeleteBook = async (bookId) => {
+    if (confirm('Are you sure you want to delete this book?')) {
+      try {
+        const res = await fetch(`https://localhost:7227/api/book/${bookId}`, {
+          method: 'DELETE'
+        });
+        
+        if (!res.ok) throw new Error('Failed to delete book');
+        
+        // Refresh book list
+        fetchBooks();
+      } catch (error) {
+        console.error('Error deleting book:', error);
+      }
+    }
+  };
 
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-white">
-      <div className="w-72 bg-white border-r flex-shrink-0 h-full overflow-y-auto ml-7">
+      {/* Fixed sidebar - no scrolling */}
+      <div className="w-72 bg-white border-r flex-shrink-0 h-screen fixed ml-7">
         <div className="flex flex-col items-center py-8">
           <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center">
             <User className="text-gray-500" size={24} />
@@ -174,10 +298,11 @@ export default function AdminPage() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto pl-0 pr-8 py-8">
-        <div className="mx-auto max-w-4xl">
+      {/* Main content - scrollable, with left margin to account for fixed sidebar */}
+      <div className="flex-1 overflow-y-auto pl-80 pr-8 py-8 h-screen">
+        <div className="mx-auto max-w-4xl pb-8">
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl text-black font-bold">Add New Book</h1>
+            <h1 className="text-2xl text-black font-bold">{bookId ? 'Edit Book' : 'Add New Book'}</h1>
             <button
               onClick={handleSubmit}
               className="bg-emerald-600 text-white py-2 px-6 rounded hover:bg-emerald-700"
@@ -193,7 +318,8 @@ export default function AdminPage() {
             </div>
           )}
 
-          <div className="bg-white border border-black rounded-lg p-6 shadow-sm">
+          <div className="bg-white border border-black rounded-lg p-6 shadow-sm mb-8">
+            {/* Form to create or edit book */}
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-6 col-span-1">
                 <div>
@@ -281,16 +407,32 @@ export default function AdminPage() {
 
               <div className="space-y-6 col-span-1">
                 <div>
-                  <label htmlFor="isbn" className="block mb-2 text-black font-medium text-left">ISBN</label>
-                  <input
-                    type="text"
-                    id="isbn"
-                    name="isbn"
-                    value={formData.isbn}
-                    onChange={handleChange}
-                    className={`w-full border ${errors.isbn ? 'border-red-500' : 'border-black'} rounded p-2 text-black`}
-                  />
-                  {errors.isbn && <div className="text-red-500 text-sm mt-1">{errors.isbn}</div>}
+                  <label htmlFor="isbn" className="block mb-2 text-black font-medium text-left">
+                    ISBN <span className="text-sm text-gray-500">(13 digits required)</span>
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="isbn"
+                      name="isbn"
+                      value={formData.isbn}
+                      onChange={handleChange}
+                      maxLength={13}
+                      className={`w-full border ${errors.isbn ? 'border-red-500' : 'border-black'} rounded p-2 text-black`}
+                      placeholder="Enter 13 digit ISBN"
+                    />
+                    {formData.isbn && formData.isbn.length > 0 && (
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm">
+                        {formData.isbn.length}/13
+                      </div>
+                    )}
+                  </div>
+                  {errors.isbn && (
+                    <div className="text-red-500 text-sm mt-1 flex items-center">
+                      <AlertCircle size={16} className="mr-1" />
+                      {errors.isbn}
+                    </div>
+                  )}
                 </div>
 
                 <div>
@@ -377,6 +519,87 @@ export default function AdminPage() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Books Table */}
+          <div>
+            <h2 className="text-xl text-black font-bold mb-4">Available Books</h2>
+            
+            {isLoading ? (
+              <div className="text-center py-8">
+                <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-emerald-600 border-r-transparent"></div>
+                <p className="mt-2">Loading books...</p>
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="min-w-full bg-white border border-black rounded-lg">
+                  <thead className="bg-gray-100">
+                    <tr>
+                      <th className="py-3 px-4 text-left border-b">Title</th>
+                      <th className="py-3 px-4 text-left border-b">Author</th>
+                      <th className="py-3 px-4 text-left border-b">ISBN</th>
+                      <th className="py-3 px-4 text-left border-b">Format</th>
+                      <th className="py-3 px-4 text-left border-b">Price</th>
+                      <th className="py-3 px-4 text-left border-b">Stock</th>
+                      <th className="py-3 px-4 text-left border-b">Published</th>
+                      <th className="py-3 px-4 text-left border-b">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {books.length === 0 ? (
+                      <tr>
+                        <td colSpan="8" className="py-4 px-4 text-center text-gray-500">
+                          No books available in the database
+                        </td>
+                      </tr>
+                    ) : (
+                      books.map((book) => (
+                        <tr key={book.id} className="hover:bg-gray-50">
+                          <td className="py-3 px-4 border-b">{book.title}</td>
+                          <td className="py-3 px-4 border-b">{book.authorName}</td>
+                          <td className="py-3 px-4 border-b">{book.isbn}</td>
+                          <td className="py-3 px-4 border-b">{book.formatName}</td>
+                          <td className="py-3 px-4 border-b">
+                            {book.onSale ? (
+                              <div>
+                                <span className="line-through text-gray-500">${book.price.toFixed(2)}</span>
+                                <span className="ml-2 text-emerald-600">
+                                  ${(book.price * (1 - book.discountedPercentage / 100)).toFixed(2)}
+                                </span>
+                              </div>
+                            ) : (
+                              <span>${book.price.toFixed(2)}</span>
+                            )}
+                          </td>
+                          <td className="py-3 px-4 border-b">{book.stock}</td>
+                          <td className="py-3 px-4 border-b">{formatDate(book.published)}</td>
+                          <td className="py-3 px-4 border-b">
+                            <div className="flex space-x-2">
+                              <button 
+                                onClick={() => handleEditBook(book)}
+                                className="p-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300"
+                                title="Edit book"
+                              >
+                                <Pencil size={16} />
+                                <span className="sr-only">Edit</span>
+                              </button>
+                              <button 
+                                onClick={() => handleDeleteBook(book.id)}
+                                className="p-2 bg-red-100 text-red-700 rounded-full hover:bg-red-200"
+                                title="Delete book"
+                              >
+                                <Trash2 size={16} />
+                                <span className="sr-only">Delete</span>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         </div>
       </div>
