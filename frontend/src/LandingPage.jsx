@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Search, User, Bookmark, ShoppingCart, Filter } from "lucide-react";
+import { Search, Bookmark, ShoppingCart, Filter } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function App() {
+export default function LandingPage() {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("All Books");
   const [sortBy, setSortBy] = useState("Popularity");
@@ -12,7 +12,6 @@ export default function App() {
   const [availability] = useState("all");
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [showUserMenu, setShowUserMenu] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -27,6 +26,9 @@ export default function App() {
     "Coming Soon",
     "Deals",
   ];
+
+  const formats = ["Hardcover", "Paperback", "eBook", "Audiobook", "Deluxe"];
+  const genres = ["Fiction", "Non-Fiction", "Mystery", "Horror", "Fantasy", "Romance", "Science Fiction", "Biography"];
 
   // Fetch books from the API
   const fetchBooks = async (page = 1, search = "") => {
@@ -45,14 +47,11 @@ export default function App() {
         },
       });
 
-      console.log("API Response:", response.data); // Log the response for debugging
-
       if (response.data && Array.isArray(response.data)) {
         setBooks(response.data);
         setTotalPages(5); // Set totalPages if your API provides that information (or adjust accordingly)
       } else {
         setBooks([]);
-        console.log("No books data found in response.");
       }
     } catch (error) {
       console.error("Error fetching books:", error);
@@ -84,12 +83,6 @@ export default function App() {
     );
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("Role");
-    navigate("/signin");
-  };
-
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
     setCurrentPage(1); // Reset to page 1 when a new search term is entered
@@ -101,6 +94,7 @@ export default function App() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      {/* Landing Header */}
       <div className="bg-green-600 text-white text-center py-2">
         Summer Sale! 20% off on selected titles. Limited time offer.
       </div>
@@ -124,35 +118,19 @@ export default function App() {
             </button>
           </div>
 
+          {/* Login / Register */}
           <div className="flex items-center space-x-4">
-            <div className="relative flex items-center">
-              <button onClick={() => setShowUserMenu(!showUserMenu)} className="p-1 hover:bg-gray-100 rounded-md">
-                <User className="h-6 w-6" />
-              </button>
-
-              {showUserMenu && (
-                <div className="absolute right-0 top-full mt-1 w-48 bg-white rounded-md shadow-lg py-1 z-10 border border-gray-200">
-                  <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Profile
-                  </Link>
-                  <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Logout
-                  </button>
-                </div>
-              )}
-            </div>
-
-            <Link to="/bookmarks" className="p-1 hover:bg-gray-100 rounded-md">
-              <Bookmark className="h-6 w-6" />
+            <Link to="/signin" className="px-4 py-2 text-sm bg-green-600 text-white rounded-md">
+              Login
             </Link>
-
-            <Link to="/cart" className="p-1 hover:bg-gray-100 rounded-md">
-              <ShoppingCart className="h-6 w-6" />
+            <Link to="/signup" className="px-4 py-2 text-sm border-2 border-green-600 rounded-md">
+              Register
             </Link>
           </div>
         </div>
       </header>
 
+      {/* Category Filter */}
       <div className="border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="flex overflow-x-auto space-x-6 py-3">
@@ -171,8 +149,8 @@ export default function App() {
         </div>
       </div>
 
+      {/* Book Grid */}
       <main className="container mx-auto px-4 py-6 flex-grow">
-        {/* Filter */}
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center">
             <button
@@ -204,13 +182,13 @@ export default function App() {
           </div>
         </div>
 
-        {/* Book Grid */}
+        {/* Book Display */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {Array.isArray(books) && books.length > 0 ? (
             books.map((book) => (
               <div
                 key={book.id}
-                onClick={() => handleBookClick(book.id)} // Navigate to book details page
+                onClick={() => handleBookClick(book.id)}
                 className="border border-gray-200 rounded-md overflow-hidden cursor-pointer"
               >
                 <div className="bg-gray-200 h-48 flex items-center justify-center">

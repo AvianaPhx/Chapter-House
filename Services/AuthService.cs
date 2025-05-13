@@ -1,68 +1,75 @@
-﻿using Chapter_House.Entities;
-using Microsoft.EntityFrameworkCore;
-using BCrypt.Net;
-using System.Runtime.CompilerServices;
-using System.IdentityModel.Tokens.Jwt;
+﻿using Chapter_House.DTO.SignIn;
+using Chapter_House.DTO.SignUp;
+using Chapter_House.Entities;
 using Chapter_House.Entities.Core;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Chapter_House.DTO.SignIn;
-using Chapter_House.DTO.SignUp;
 
 namespace Chapter_House.Services
 {
     public class AuthService : IAuthService
     {
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly JwtSettings _jwtSettings;
 
-        private readonly ApplicationDbContext _db;
-        private readonly JwtSettings _jwt;
-
-        public AuthService(ApplicationDbContext db, IOptions<JwtSettings> jwtOptions)
+        public AuthService(
+            UserManager<User> userManager,
+            SignInManager<User> signInManager,
+            IOptions<JwtSettings> jwtOptions)
         {
-            _db = db;
-            _jwt = jwtOptions.Value;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _jwtSettings = jwtOptions.Value;
         }
 
-
-        public async Task<SignUpResponse> SignUpAsync(SignUpRequest req)
+        public async Task<SignUpResponse> SignUpAsync(SignUpRequest request)
         {
-            // Checking the Email already used or not
-            if (await _db.Users.AnyAsync(u => u.Email == req.Email))
+            var existingUser = await _userManager.FindByEmailAsync(request.Email);
+            if (existingUser != null)
             {
                 return new SignUpResponse
                 {
                     IsSuccess = false,
-                    Message = "Email already Registered"
+                    Message = "Email already registered"
                 };
             }
 
-            // Hashing the password
-            string hash = BCrypt.Net.BCrypt.HashPassword(req.Password);
-
             var user = new User
             {
-                UserName = req.UserName,
-                Email = req.Email,
-                PasswordHash = hash
+                UserName = request.UserName,
+                Email = request.Email,
+                CreatedAt = DateTime.UtcNow
             };
 
-            _db.Users.Add(user);
-            await _db.SaveChangesAsync();
+            var result = await _userManager.CreateAsync(user, request.Password);
+            if (!result.Succeeded)
+            {
+                return new SignUpResponse
+                {
+                    IsSuccess = false,
+                    Message = string.Join(", ", result.Errors.Select(e => e.Description))
+                };
+            }
+
+            await _userManager.AddToRoleAsync(user, "Member");
 
             return new SignUpResponse
             {
                 IsSuccess = true,
-                Message = "User created",
+                Message = "User created successfully",
                 UserId = user.Id
             };
         }
 
-        public async Task<SignInResponse> SignInAsync(SignInRequest req)
+        public async Task<SignInResponse> SignInAsync(SignInRequest request)
         {
-            var user = await _db.Users.SingleOrDefaultAsync(u => u.Email == req.Email && u.Role == req.Role);
-            if (user is null || !BCrypt.Net.BCrypt.Verify(req.Password, user.PasswordHash))
+            var user = await _userManager.FindByEmailAsync(request.Email);
+            if (user == null)
             {
                 return new SignInResponse
                 {
@@ -71,40 +78,57 @@ namespace Chapter_House.Services
                 };
             }
 
-            var (token, expires) = GenerateJwtToken(user);
+            var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
+            if (!result.Succeeded)
+            {
+                return new SignInResponse
+                {
+                    IsSuccess = false,
+                    Message = "Invalid email or password"
+                };
+            }
+
+            var (token, expires, role) = await GenerateJwtToken(user);
 
             return new SignInResponse
             {
                 IsSuccess = true,
                 Message = "Login successful",
                 AccessToken = token,
-                ExpiresAt = expires
+                ExpiresAt = expires,
+                Role = role
             };
         }
 
-        private (string token, DateTime expires) GenerateJwtToken(User user)
+        private async Task<(string Token, DateTime Expires, string Role)> GenerateJwtToken(User user)
         {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwt.Secret));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var roles = await _userManager.GetRolesAsync(user);
+            var role = roles.FirstOrDefault() ?? "Member";
 
-            var claims = new[]
+            var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub,  user.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.Email,user.Email),
-                new Claim(ClaimTypes.Role,              user.Role.ToString()),
-                new Claim("id", user.Id.ToString())
+                new Claim("id", user.Id.ToString()),                    // ✅ Add this line
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Role, role),
+                new Claim("role", role)
             };
 
-            var expires = DateTime.UtcNow.AddHours(_jwt.ExpiryHours);
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var expires = DateTime.UtcNow.AddHours(_jwtSettings.ExpiryHours);
 
             var token = new JwtSecurityToken(
-                issuer: _jwt.Issuer,
-                audience: _jwt.Audience,
+                issuer: _jwtSettings.Issuer,
+                audience: _jwtSettings.Audience,
                 claims: claims,
                 expires: expires,
-                signingCredentials: creds);
+                signingCredentials: creds
+            );
 
-            return (new JwtSecurityTokenHandler().WriteToken(token), expires);
+            return (new JwtSecurityTokenHandler().WriteToken(token), expires, role);
         }
 
     }

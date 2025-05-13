@@ -1,10 +1,12 @@
 ﻿using Chapter_House.DTO.Cart;
 using Chapter_House.Entities.Core;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Chapter_House.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CartController : ControllerBase
@@ -43,8 +45,8 @@ namespace Chapter_House.Controllers
             // Return the cart items
             return Ok(cart.CartItems.Select(ci => new
             {
+                CartItemId = ci.Id,
                 ci.Book.Title,
-                ci.Book.Author,
                 ci.Book.Price,
                 ci.Quantity
             }));
@@ -53,7 +55,15 @@ namespace Chapter_House.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToCart([FromBody] AddToCartDto addToCartDto)
         {
-            var userId = int.Parse(User.FindFirst("id").Value); // Get the user id from the token (simulated)
+            var userIdClaim = User.FindFirst("id");
+
+            if (userIdClaim == null)
+            {
+                return Unauthorized("User is not authenticated.");
+            }
+
+            var userId = int.Parse(userIdClaim.Value);
+
             var book = await dbContext.Books.FindAsync(addToCartDto.BookId);
 
             if (book == null)
@@ -77,7 +87,7 @@ namespace Chapter_House.Controllers
 
             if (existingItem != null)
             {
-                existingItem.Quantity += addToCartDto.Quantity;  // Update the quantity if the book is already in the cart
+                existingItem.Quantity += addToCartDto.Quantity;
                 dbContext.CartItems.Update(existingItem);
             }
             else

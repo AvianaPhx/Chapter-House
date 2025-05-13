@@ -2,10 +2,8 @@
 {
     public class SignUpResponse
     {
-        public bool IsSuccess { get; init; }
-
-        public string Message { get; init; } = string.Empty;
-
-        public int? UserId { get; init; }
+        public bool IsSuccess { get; set; }
+        public string Message { get; set; } = string.Empty;
+        public int? UserId { get; set; }
     }
 }

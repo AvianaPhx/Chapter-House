@@ -1,4 +1,4 @@
-﻿using Chapter_House.Entities.Lookup;
+﻿
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
@@ -10,6 +10,7 @@ namespace Chapter_House.Entities.Core
         [Key]
         public int Id { get; set; }
         public string? Title { get; set; }
+
         public string? Description { get; set; }
         public decimal Price { get; set; }
         [StringLength(13, MinimumLength = 13)] public required string Isbn { get; set; }
@@ -33,32 +34,10 @@ namespace Chapter_House.Entities.Core
         public string? Language { get; set; }
 
 
-        [Required]
-        [ForeignKey(nameof(BookGenre))]
-        public int GenreId { get; set; }
-        [JsonIgnore]
-        public BookGenre? Genre { get; set; }
-
-
-        [Required]
-        [ForeignKey(nameof(BookFormat))]
-        public int FormatId { get; set; }
-        [JsonIgnore]
-        public BookFormat? Format { get; set; }
-
-        
-        [Required]
-        [ForeignKey(nameof(BookPublisher))]
-        public int PublisherId { get; set; }
-        [JsonIgnore]
-        public BookPublisher? Publisher { get; set; }
-
-
-        [Required]
-        [ForeignKey(nameof(BookAuthor))]
-        public int AuthorId { get; set; }
-        [JsonIgnore]
-        public BookAuthor? Author { get; set; }
+        public string? GenreName { get; set; }
+        public string? FormatName { get; set;}
+        public string? AuthorName { get; set; }
+        public string? PublisherName { get; set; }
 
     }
 }

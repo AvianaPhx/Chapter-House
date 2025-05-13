@@ -28,11 +28,10 @@ namespace Chapter_House.DTO.Books
 
         public string? Language { get; set; }
 
-
-        public int GenreId { get; set; }
-        public int FormatId { get; set; }
-        public int PublisherId { get; set; }
-        public int AuthorId { get; set; }
+        public string? GenreName { get; set; }
+        public string? FormatName { get; set; }
+        public string? AuthorName { get; set; }
+        public string? PublisherName { get; set; }
 
     }
 }
