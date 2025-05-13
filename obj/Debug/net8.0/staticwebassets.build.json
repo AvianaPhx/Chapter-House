@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "VgxlRoYAAIOfmFJTCvNFyKC9xYSc9j7HMeTpA6QYu0Q=",
+  "Hash": "IgqAQR7W8luzpfnIkWgkmSAZ80rpTZpyNqwqFIztX2A=",
   "Source": "Chapter House",
   "BasePath": "_content/Chapter House",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }

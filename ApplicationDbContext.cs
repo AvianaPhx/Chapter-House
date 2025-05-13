@@ -65,6 +65,6 @@ namespace Chapter_House
                 .WithMany(o => o.Items)
                 .HasForeignKey(oi => oi.OrderId);
         }
-
+        
     }
 }
