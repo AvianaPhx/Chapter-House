@@ -30,13 +30,12 @@ export default function LandingPage() {
   const formats = ["Hardcover", "Paperback", "eBook", "Audiobook", "Deluxe"];
   const genres = ["Fiction", "Non-Fiction", "Mystery", "Horror", "Fantasy", "Romance", "Science Fiction", "Biography"];
 
-  // Fetch books from the API
   const fetchBooks = async (page = 1, search = "") => {
     try {
       const response = await axios.get("https://localhost:7227/api/book", {
         params: {
           page: page,
-          pageSize: 10, // Adjust the page size as needed
+          pageSize: 10, 
           search: search,
           category: selectedCategory,
           priceMin: priceRange.min,
@@ -49,7 +48,7 @@ export default function LandingPage() {
 
       if (response.data && Array.isArray(response.data)) {
         setBooks(response.data);
-        setTotalPages(5); // Set totalPages if your API provides that information (or adjust accordingly)
+        setTotalPages(5);
       } else {
         setBooks([]);
       }
@@ -85,11 +84,11 @@ export default function LandingPage() {
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
-    setCurrentPage(1); // Reset to page 1 when a new search term is entered
+    setCurrentPage(1); 
   };
 
   const handleBookClick = (bookId) => {
-    navigate(`/book/${bookId}`); // Navigate to book details page with the book id
+    navigate(`/book/${bookId}`);
   };
 
   return (
@@ -118,7 +117,6 @@ export default function LandingPage() {
             </button>
           </div>
 
-          {/* Login / Register */}
           <div className="flex items-center space-x-4">
             <Link to="/signin" className="px-4 py-2 text-sm bg-green-600 text-white rounded-md">
               Login
@@ -130,7 +128,6 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {/* Category Filter */}
       <div className="border-b border-gray-200">
         <div className="container mx-auto px-4">
           <div className="flex overflow-x-auto space-x-6 py-3">
@@ -149,7 +146,6 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Book Grid */}
       <main className="container mx-auto px-4 py-6 flex-grow">
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center">
@@ -182,7 +178,6 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* Book Display */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {Array.isArray(books) && books.length > 0 ? (
             books.map((book) => (
@@ -213,7 +208,6 @@ export default function LandingPage() {
           )}
         </div>
 
-        {/* Pagination */}
         <div className="flex justify-center mt-8">
           <nav className="flex items-center space-x-2">
             {currentPage > 1 && (

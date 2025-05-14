@@ -17,20 +17,16 @@ namespace Chapter_House.Controllers
 
 
         [HttpGet]
-        public IActionResult GetAllBooks([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10, [FromQuery] string search = "")
+        public IActionResult GetAllBooks([FromQuery] string search = "")
         {
             var query = dbContext.Books.AsQueryable();
 
             if (!string.IsNullOrEmpty(search))
             {
-                query = query.Where(b => b.Title.Contains(search) ||
-                                 b.Description.Contains(search));
+                query = query.Where(b => b.Title.Contains(search) || b.Description.Contains(search) || b.Isbn.Contains(search));
             }
 
-            var allBooks = query
-                            .Skip((pageNumber - 1) * pageSize)
-                            .Take(pageSize)
-                            .ToList();
+            var allBooks = query.ToList();
 
             return Ok(allBooks);
         }
@@ -81,7 +77,7 @@ namespace Chapter_House.Controllers
 
         [HttpPut]
         [Route("{id:int}")]
-        public IActionResult UpdateBooks(int id, UpdateBookDto updateBookDto )
+        public IActionResult UpdateBooks(int id, UpdateBookDto updateBookDto)
         {
             var book = dbContext.Books.Find(id);
 

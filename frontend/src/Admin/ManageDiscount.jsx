@@ -175,7 +175,7 @@ export default function BookManagementPage() {
           </div>
           <div className="mt-2 text-center">
             <div className="font-medium uppercase text-gray-500">ADMIN</div>
-            <div className="text-sm text-gray-500">email@email.com</div>
+            <div className="text-sm text-gray-500">admin@chapterhouse.com</div>
           </div>
         </div>
         

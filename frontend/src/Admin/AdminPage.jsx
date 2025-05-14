@@ -22,7 +22,7 @@ export default function AdminPage() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [bookId, setBookId] = useState(null); // To store the ID of the book being edited
+  const [bookId, setBookId] = useState(null); 
   const location = useLocation();
   const activeButton = location.pathname === '/admin' ? 'add-book' :
                        location.pathname === '/announcement' ? 'announcement' :
@@ -39,7 +39,7 @@ export default function AdminPage() {
     { value: 'poetry', label: 'Poetry' }
   ];
 
-  // Fetch books from the database
+  // Fetch book database
   const fetchBooks = async () => {
     setIsLoading(true);
     try {
@@ -56,25 +56,22 @@ export default function AdminPage() {
     }
   };
 
-  // Load books when component mounts
+  // Load book
   useEffect(() => {
     fetchBooks();
   }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
-    // Special handling for ISBN field
+
     if (name === 'isbn') {
-      // Only allow digits
       const digitsOnly = value.replace(/\D/g, '');
       
       setFormData(prevState => ({
         ...prevState,
         [name]: digitsOnly
       }));
-      
-      // Validate ISBN length
+ 
       if (digitsOnly.length > 0 && digitsOnly.length !== 13) {
         setErrors(prev => ({
           ...prev,
@@ -125,8 +122,7 @@ export default function AdminPage() {
         newErrors[field] = 'This field is required';
       }
     });
-    
-    // ISBN validation
+
     if (formData.isbn && formData.isbn.length !== 13) {
       newErrors.isbn = `ISBN must be exactly 13 digits. Current length: ${formData.isbn.length}`;
     }
@@ -143,7 +139,7 @@ export default function AdminPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     if (e) e.preventDefault();
 
     if (validateForm()) {
@@ -169,20 +165,25 @@ export default function AdminPage() {
           publisherName: formData.publisher,
         };
 
-        const res = await fetch(`https://localhost:7227/api/book/${bookId}`, {
-          method: "PUT",  // or PATCH, based on your backend setup
+        const url = bookId 
+          ? `https://localhost:7227/api/book/${bookId}` 
+          : `https://localhost:7227/api/book`; 
+
+        const method = bookId ? "PUT" : "POST"; 
+
+        const res = await fetch(url, {
+          method: method,
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(payload),
         });
 
-        if (!res.ok) throw new Error("Failed to update book");
+        if (!res.ok) throw new Error("Failed to update or add book");
 
         setShowSuccess(true);
         setTimeout(() => setShowSuccess(false), 3000);
 
-        // Reset form
         setFormData({
           title: '',
           author: '',
@@ -198,33 +199,31 @@ export default function AdminPage() {
           discount: '10%',
         });
 
-        // Refresh book list
         fetchBooks();
       } catch (error) {
         console.error("Failed to upload book", error);
       }
     } else {
-      // Show error popup for ISBN if it's invalid
+ 
       if (errors.isbn) {
         alert(errors.isbn);
       }
       console.log("Form has errors");
     }
-  };
-
+};
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString();
   }
 
   const handleEditBook = async (book) => {
-    // Pre-fill form with selected book's data
+ 
     setFormData({
       title: book.title,
       author: book.authorName,
       publisher: book.publisherName,
       publicationDate: book.published,
-      genres: book.genreName.split(", "), // Assuming genres are stored as a comma-separated string
+      genres: book.genreName.split(", "),
       description: book.description,
       isbn: book.isbn,
       stock: book.stock,
@@ -234,11 +233,9 @@ export default function AdminPage() {
       discount: book.discountedPercentage ? `${book.discountedPercentage}%` : '10%',
     });
 
-    // Set an ID to indicate the current book being edited
     setBookId(book.id);
   };
 
-  // Function to handle book deletion
   const handleDeleteBook = async (bookId) => {
     if (confirm('Are you sure you want to delete this book?')) {
       try {
@@ -247,8 +244,7 @@ export default function AdminPage() {
         });
         
         if (!res.ok) throw new Error('Failed to delete book');
-        
-        // Refresh book list
+
         fetchBooks();
       } catch (error) {
         console.error('Error deleting book:', error);
@@ -256,9 +252,15 @@ export default function AdminPage() {
     }
   };
 
+    const handleLogout = () => 
+    {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("Role");
+      navigate("/signin");
+    };
+
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-white">
-      {/* Fixed sidebar - no scrolling */}
       <div className="w-72 bg-white border-r flex-shrink-0 h-screen fixed ml-7">
         <div className="flex flex-col items-center py-8">
           <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center">
@@ -266,7 +268,7 @@ export default function AdminPage() {
           </div>
           <div className="mt-2 text-center">
             <div className="font-medium uppercase text-gray-500">ADMIN</div>
-            <div className="text-sm text-gray-500">email@email.com</div>
+            <div className="text-sm text-gray-500">admin@chapterhouse.com</div>
           </div>
         </div>
 
@@ -291,14 +293,13 @@ export default function AdminPage() {
           </button>
           <button
             className={`w-full py-3 px-4 text-left rounded font-medium ${activeButton === 'logout' ? 'bg-emerald-600 text-black' : 'text-gray-700 hover:bg-gray-100'}`}
-            onClick={() => navigate('/login')}
+            onClick={handleLogout}
           >
             Log Out
           </button>
         </div>
       </div>
 
-      {/* Main content - scrollable, with left margin to account for fixed sidebar */}
       <div className="flex-1 overflow-y-auto pl-80 pr-8 py-8 h-screen">
         <div className="mx-auto max-w-4xl pb-8">
           <div className="flex justify-between items-center mb-6">
@@ -319,7 +320,6 @@ export default function AdminPage() {
           )}
 
           <div className="bg-white border border-black rounded-lg p-6 shadow-sm mb-8">
-            {/* Form to create or edit book */}
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-6 col-span-1">
                 <div>
@@ -521,7 +521,6 @@ export default function AdminPage() {
             </div>
           </div>
 
-          {/* Books Table */}
           <div>
             <h2 className="text-xl text-black font-bold mb-4">Available Books</h2>
             

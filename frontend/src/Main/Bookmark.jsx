@@ -8,74 +8,85 @@ export default function Bookmarks() {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [bookmarkedItems, setBookmarkedItems] = useState([]);
 
-  // Fetch bookmarked items from API
-  const fetchBookmarks = async () => {
-    try {
-      const token = localStorage.getItem("authToken");
-      const res = await axios.get("/api/Whitelist", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      // Ensure that res.data is an array before setting it
-      setBookmarkedItems(Array.isArray(res.data) ? res.data : []);
-    } catch (err) {
-      console.error("Failed to fetch bookmarks:", err);
-      setBookmarkedItems([]); // In case of an error, reset to empty array
-    }
-  };
-
-  // Re-fetch the bookmarks when the component mounts
   useEffect(() => {
-    fetchBookmarks();
-  }, []);
+    const fetchBookmarks = async () => {
+      const token = localStorage.getItem("accessToken");
 
-  // Remove item from bookmarks
-  const handleRemoveItem = async (id) => {
+      if (!token) {
+        navigate("/signin");
+        return;
+      }
+
+      try {
+        const response = await fetch("https://localhost:7227/api/whitelist", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch bookmarked items");
+        }
+
+        const data = await response.json();
+        
+        const formatted = data.map((item) => ({
+          id: item.id,
+          title: item.title,
+          price: item.price,
+          description: item.description,
+          isbn: item.isbn,
+          image: "/placeholder.svg?height=80&width=60",
+        }));
+
+        setBookmarkedItems(formatted);
+      } catch (error) {
+        console.error("Error loading bookmarks:", error);
+        setBookmarkedItems([]); 
+      }
+    };
+
+    fetchBookmarks();
+  }, [navigate]);
+
+  const handleRemoveItem = async (bookId) => {
+    const token = localStorage.getItem("accessToken");
+
     try {
-      const token = localStorage.getItem("authToken");
-      await axios.delete(`/api/Whitelist/${id}`, {
+      const response = await fetch(`https://localhost:7227/api/whitelist/${bookId}`, {
+        method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setBookmarkedItems((prev) => prev.filter((item) => item.id !== id));
-    } catch (err) {
-      console.error("Failed to remove bookmark:", err);
+
+      if (!response.ok) {
+        throw new Error("Failed to remove bookmark");
+      }
+
+      setBookmarkedItems((prev) => prev.filter((item) => item.id !== bookId));
+      
+      alert("Bookmark removed successfully!");
+    } catch (error) {
+      console.error("Error removing bookmark:", error);
+      alert("Failed to remove bookmark. Please try again.");
     }
   };
 
-  // Add item to the cart
   const handleAddToCart = (item) => {
-    // Replace with actual cart logic later
+
     alert(`Added ${item.title} to cart`);
     navigate("/cart");
   };
 
-  // Logout logic
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     navigate("/login");
   };
 
-  // Add item to bookmarks
-  const handleAddToBookmarks = async (bookId) => {
-    try {
-      const token = localStorage.getItem("authToken");
-      await axios.post("/api/Whitelist", { bookId }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      fetchBookmarks(); // Re-fetch bookmarks after adding one
-    } catch (err) {
-      console.error("Failed to add bookmark:", err);
-    }
-  };
-
   return (
     <div className="flex flex-col min-h-screen w-full">
-      {/* Header */}
+
       <header className="border-b border-gray-200 py-4 w-full">
         <div className="w-full max-w-[1400px] mx-auto px-4 flex items-center justify-between">
           <Link to="/home" className="text-xl font-medium">ChapterHouse</Link>
@@ -111,12 +122,11 @@ export default function Bookmarks() {
         </div>
       </header>
 
-      {/* Main */}
       <main className="w-full max-w-[1400px] mx-auto px-4 py-6 flex-grow">
         <h1 className="text-2xl font-bold mb-6">Bookmarks</h1>
 
         <div className="border border-gray-200 rounded-md overflow-hidden">
-          {/* Table header */}
+
           <div className="grid grid-cols-12 bg-gray-50 p-4 border-b border-gray-200">
             <div className="col-span-1 font-medium">S.N.</div>
             <div className="col-span-2 font-medium">Book Image</div>
@@ -128,7 +138,6 @@ export default function Bookmarks() {
             <div className="col-span-1 font-medium text-center">Remove</div>
           </div>
 
-          {/* Table body */}
           {Array.isArray(bookmarkedItems) && bookmarkedItems.length > 0 ? (
             bookmarkedItems.map((item, index) => (
               <div key={item.id} className="grid grid-cols-12 p-4 border-b border-gray-200 items-center">

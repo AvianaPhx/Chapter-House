@@ -26,7 +26,6 @@ namespace Chapter_House.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMyWhitelist()
         {
-            // Get the currently authenticated user
             var currentUser = await _userManager.GetUserAsync(User);
 
             if (currentUser == null)
@@ -34,10 +33,9 @@ namespace Chapter_House.Controllers
                 return Unauthorized("User is not authenticated.");
             }
 
-            // Get all books in the user's whitelist
             var myWhitelist = await _dbContext.Whitelists
-                .Where(w => w.UserId == currentUser.Id)  // Use the user's int Id
-                .Include(w => w.Book)  // Include related book data
+                .Where(w => w.UserId == currentUser.Id) 
+                .Include(w => w.Book) 
                 .Select(w => new WhitelistItemDto
                 {
                     Id = w.Book.Id,
@@ -51,17 +49,14 @@ namespace Chapter_House.Controllers
             return Ok(myWhitelist);
         }
 
-        // POST: api/whitelist
         [HttpPost]
         public async Task<IActionResult> AddToWhitelist([FromBody] AddToWhitelistDto addToWhitelistDto)
         {
-            // Validate input
             if (addToWhitelistDto == null || addToWhitelistDto.BookId <= 0)
             {
                 return BadRequest("Invalid book ID.");
             }
 
-            // Get the currently authenticated user
             var currentUser = await _userManager.GetUserAsync(User);
 
             if (currentUser == null)
@@ -69,7 +64,6 @@ namespace Chapter_House.Controllers
                 return Unauthorized("User is not authenticated.");
             }
 
-            // Find the book by BookId
             var book = await _dbContext.Books
                 .FirstOrDefaultAsync(b => b.Id == addToWhitelistDto.BookId);
 
@@ -78,7 +72,6 @@ namespace Chapter_House.Controllers
                 return NotFound("Book not found.");
             }
 
-            // Check if the book is already in the user's whitelist
             var existingWhitelist = await _dbContext.Whitelists
                 .FirstOrDefaultAsync(w => w.UserId == currentUser.Id && w.BookId == addToWhitelistDto.BookId);
 
@@ -87,7 +80,6 @@ namespace Chapter_House.Controllers
                 return Conflict("Book is already in your whitelist.");
             }
 
-            // Add the book to the whitelist
             var whitelistEntry = new Whitelist
             {
                 UserId = currentUser.Id,
@@ -108,17 +100,14 @@ namespace Chapter_House.Controllers
             }
         }
 
-        // DELETE: api/whitelist/{bookId}
         [HttpDelete("{bookId:int}")]
         public async Task<IActionResult> RemoveFromWhitelist(int bookId)
         {
-            // Validate input
             if (bookId <= 0)
             {
                 return BadRequest("Invalid book ID.");
             }
 
-            // Get the currently authenticated user
             var currentUser = await _userManager.GetUserAsync(User);
 
             if (currentUser == null)
@@ -126,7 +115,6 @@ namespace Chapter_House.Controllers
                 return Unauthorized("User is not authenticated.");
             }
 
-            // Find the whitelist entry for the user and book
             var whitelistEntry = await _dbContext.Whitelists
                 .FirstOrDefaultAsync(w => w.UserId == currentUser.Id && w.BookId == bookId);
 
@@ -137,7 +125,6 @@ namespace Chapter_House.Controllers
 
             try
             {
-                // Remove the book from the whitelist
                 _dbContext.Whitelists.Remove(whitelistEntry);
                 await _dbContext.SaveChangesAsync();
 

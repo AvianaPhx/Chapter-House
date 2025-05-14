@@ -75,7 +75,6 @@ export default function OrderHistory() {
     <div className="flex flex-col min-h-screen w-full">
       <header className="border-b border-gray-200 py-4">
         <div className="container mx-auto px-4 flex items-center justify-between">
-          {/* Logo */}
           <Link to="/home" className="text-xl font-medium">
             ChapterHouse
           </Link>
@@ -139,7 +138,6 @@ export default function OrderHistory() {
         <h1 className="text-2xl font-bold mb-6">Order History</h1>
 
         <div className="border border-gray-200 rounded-md overflow-hidden">
-          {/* Table Header */}
           <div className="grid grid-cols-12 bg-gray-50 p-4 border-b border-gray-200">
             <div className="col-span-2 font-medium">Order ID</div>
             <div className="col-span-2 font-medium">Date</div>
@@ -149,7 +147,6 @@ export default function OrderHistory() {
             <div className="col-span-1 font-medium text-right">Actions</div>
           </div>
 
-          {/* Orders */}
           {orders.length > 0 ? (
             orders.map((order) => (
               <div key={order.id} className="grid grid-cols-12 p-4 border-b border-gray-200 items-center">

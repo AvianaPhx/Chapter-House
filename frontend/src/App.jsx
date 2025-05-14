@@ -11,6 +11,8 @@ import BookManagementPage from './Admin/ManageDiscount';
 import Announcement from './Admin/Announcement';
 import OrderHistory from './Main/OrderHistory';
 import LandingPage from './LandingPage';
+import UserProfile from './Main/UserProfile';
+import OrderManagement from './Admin/OrderManagement';
 
 function App() {
 
@@ -28,12 +30,13 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/bookmarks" element={<Bookmark />} />
         <Route path="/orderhistory" element={<OrderHistory />} />
-
+        <Route path="/profile" element={<UserProfile />} />
 
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/announcement" element={<Announcement />} />
         <Route path="/discount" element={<BookManagementPage />} />
-
+        
+        <Route path="/staff" element={<OrderManagement />} />
       </Routes>
     </Router>
     </>

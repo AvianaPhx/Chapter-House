@@ -73,7 +73,8 @@ export default function Register() {
       })
 
       console.log(response.data)
-      alert("register bhayo ")
+      alert("Registered")
+      
     } catch (err) {
       console.error("Registration error:", err)
       if (err.response?.data?.errors) {

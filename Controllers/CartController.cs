@@ -19,30 +19,21 @@ namespace Chapter_House.Controllers
 
         public async Task<IActionResult> GetCart()
         {
-            // Retrieve the user ID from the authenticated user
-            var userIdClaim = User.FindFirst("id"); // Look for the "id" claim in the token
+            var userIdClaim = User.FindFirst("id"); 
 
             if (userIdClaim == null)
             {
-                return Unauthorized("User is not authenticated.");  // Return Unauthorized if the claim is not found
+                return Unauthorized("User is not authenticated.");  
             }
-
-            // Parse the user ID from the claim
             var userId = int.Parse(userIdClaim.Value);
 
-            // Fetch the user's cart from the database
-            var cart = await dbContext.Carts
-                                      .Where(c => c.UserId == userId)  // Use the user ID from the claim
-                                      .Include(c => c.CartItems)
-                                          .ThenInclude(ci => ci.Book)
-                                      .FirstOrDefaultAsync();
+            var cart = await dbContext.Carts.Where(c => c.UserId == userId) .Include(c => c.CartItems).ThenInclude(ci => ci.Book).FirstOrDefaultAsync();
 
             if (cart == null)
             {
                 return NotFound("Cart not found.");
             }
 
-            // Return the cart items
             return Ok(cart.CartItems.Select(ci => new
             {
                 CartItemId = ci.Id,
@@ -71,9 +62,7 @@ namespace Chapter_House.Controllers
                 return NotFound("Book not found.");
             }
 
-            var cart = await dbContext.Carts
-                                      .Where(c => c.UserId == userId)
-                                      .FirstOrDefaultAsync();
+            var cart = await dbContext.Carts.Where(c => c.UserId == userId).FirstOrDefaultAsync();
 
             if (cart == null)
             {
@@ -82,8 +71,7 @@ namespace Chapter_House.Controllers
                 await dbContext.SaveChangesAsync();
             }
 
-            var existingItem = await dbContext.CartItems
-                                              .FirstOrDefaultAsync(ci => ci.CartId == cart.Id && ci.BookId == addToCartDto.BookId);
+            var existingItem = await dbContext.CartItems.FirstOrDefaultAsync(ci => ci.CartId == cart.Id && ci.BookId == addToCartDto.BookId);
 
             if (existingItem != null)
             {

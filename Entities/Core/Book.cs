@@ -29,7 +29,7 @@ namespace Chapter_House.Entities.Core
 
         public decimal? TotalPrice { get; set; }
 
-        public DateTime? DiscountStartDate { get; set; } // Either today or choose date from frontend
+        public DateTime? DiscountStartDate { get; set; }
         public DateTime? DiscountEndDate { get; set; }
         public string? Language { get; set; }
 

@@ -18,7 +18,7 @@ export default function Announcement() {
   const location = useLocation();
   const activeButton = location.pathname === '/admin' ? 'add-book' : 
                      location.pathname === '/announcement' ? 'announcement' : 
-                     'add-book'; // default
+                     'add-book';
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -28,7 +28,6 @@ export default function Announcement() {
       [name]: value
     }));
     
-    // Clear error for this field if it exists
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -47,8 +46,7 @@ export default function Announcement() {
         image: selectedFile,
         imageUrl: imageUrl
       }));
-      
-      // Clear image error if it exists
+
       if (errors.image) {
         setErrors(prev => ({
           ...prev,
@@ -86,12 +84,7 @@ export default function Announcement() {
     
     if (validateForm()) {
       console.log('Submitting announcement data:', formData);
-      // Here you would typically send the data to an API
-      
-      // Show success message
       setShowSuccess(true);
-      
-      // Hide success message after 3 seconds
       setTimeout(() => {
         setShowSuccess(false);
       }, 3000);
@@ -102,7 +95,6 @@ export default function Announcement() {
 
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-white">
-      {/* Sidebar - Fixed width, full height */}
       <div className="w-72 bg-white border-r flex-shrink-0 h-full overflow-y-auto ml-7">
         <div className="flex flex-col items-center py-8">
           <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center">
@@ -110,7 +102,7 @@ export default function Announcement() {
           </div>
           <div className="mt-2 text-center">
             <div className="font-medium uppercase text-gray-500">ADMIN</div>
-            <div className="text-sm text-gray-500">email@email.com</div>
+            <div className="text-sm text-gray-500">admin@chapterhouse.com</div>
           </div>
         </div>
         
@@ -161,7 +153,6 @@ export default function Announcement() {
             </div>
       </div>
 
-      {/* Main Content - Flexible width, full height with scrolling */}
       <div className="flex-1 overflow-y-auto pl-0 pr-8 py-8">
         <div className="mx-auto max-w-4xl">
           <div className="flex justify-between items-center mb-6">

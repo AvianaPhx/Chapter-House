@@ -21,6 +21,8 @@ namespace Chapter_House
         public DbSet<Whitelist> Whitelists => Set<Whitelist>();
         public DbSet<CartItem> CartItems => Set<CartItem>();
         public DbSet<Cart> Carts => Set<Cart>();
+        public DbSet<Order> Orders => Set<Order>();
+        public DbSet<OrderItem> OrderItems => Set<OrderItem>();
 
 
         /* Social / Marketing */

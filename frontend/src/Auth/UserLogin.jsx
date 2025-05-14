@@ -32,18 +32,15 @@ export default function Login() {
       const { accessToken, isSuccess } = response.data;
 
       if (isSuccess && accessToken) {
-        // Manual JWT decoding
         const base64Url = accessToken.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         const payload = JSON.parse(atob(base64));
 
-        // Access role
         const role = payload.role || payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
 
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('Role', role);
 
-        // Redirect based on role
         switch (role) {
           case "Admin":
             navigate('/admin');

@@ -34,33 +34,33 @@ export default function BookDetail() {
   };
 
   const handleAddToCart = async () => {
-  if (!isLoggedIn()) {
-    navigate("/signin");
-    return;
-  }
+    if (!isLoggedIn()) {
+      navigate("/signin");
+      return;
+    }
 
-  try {
-    const token = localStorage.getItem("accessToken");
+    try {
+      const token = localStorage.getItem("accessToken");
 
-    await axios.post(
-      "https://localhost:7227/api/cart",
-      {
-        bookId: book.id,
-        quantity: quantity,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      await axios.post(
+        "https://localhost:7227/api/cart",
+        {
+          bookId: book.id,
+          quantity: quantity,
         },
-      }
-    );
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-    alert(`Added ${quantity} copy(ies) of "${book.title}" to your cart.`);
-  } catch (error) {
-    console.error("Error adding to cart:", error);
-    alert("Failed to add to cart. Please try again.");
-  }
-};
+      alert(`Added ${quantity} copy(ies) of "${book.title}" to your cart.`);
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+      alert("Failed to add to cart. Please try again.");
+    }
+  };
 
 
   const handleBuyNow = () => {
@@ -72,14 +72,54 @@ export default function BookDetail() {
     alert(`Proceeding to checkout with ${quantity} copy(ies) of ${book.title}`);
   };
 
-  const handleBookmark = () => {
+  const handleBookmark = async () => {
     if (!isLoggedIn()) {
       navigate("/signin");
       return;
     }
 
-    setBookmarked(!bookmarked);
-    alert(`${book.title} ${!bookmarked ? 'added to' : 'removed from'} bookmarks.`);
+    try {
+      const token = localStorage.getItem("accessToken");
+
+      if (bookmarked) {
+        // Remove from bookmarks
+        await axios.delete(
+          `https://localhost:7227/api/whitelist/${book.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setBookmarked(false);
+        alert(`${book.title} removed from bookmarks.`);
+      } else {
+        // Add to bookmarks
+        try {
+          await axios.post(
+            "https://localhost:7227/api/whitelist",
+            { bookId: book.id },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          setBookmarked(true);
+          alert(`${book.title} added to bookmarks.`);
+        } catch (error) {
+          if (error.response?.status === 409) {
+            setBookmarked(true);
+            alert(`${book.title} is already in your bookmarks.`);
+          } else {
+            throw error; 
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Error updating bookmarks:", error);
+      alert("Failed to update bookmarks. Please try again.");
+    }
   };
 
   const handleLogout = () => {

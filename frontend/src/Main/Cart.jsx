@@ -90,8 +90,35 @@ export default function Cart() {
   };
 
 
-  const handleCheckout = () => {
-    alert("checkout gar");
+  const handleCheckout = async () => {
+    const cartItemsToCheckout = cartItems.map(item => ({
+      BookId: item.id, 
+      Quantity: item.quantity, 
+    }));
+
+    try {
+      const response = await fetch('https://localhost:7227/api/Order/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(cartItemsToCheckout), 
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        alert(`Error: ${errorText || "Failed to checkout"}`);
+        return;
+      }
+
+      const data = await response.json();
+      alert(`Order placed successfully! Order ID: ${data.orderId}, Total: $${data.totalAmount}`);
+
+    } catch (error) {
+      console.error('Error during checkout:', error);
+      alert("An error occurred during checkout. Please try again.");
+    }
   };
 
   const handleLogout = () => {
@@ -240,7 +267,6 @@ export default function Cart() {
             </div>
           </div>
 
-          {/* Order Summary */}
           <div className="w-full lg:w-1/3">
             <div className="border border-gray-200 rounded-md p-6">
               <h2 className="text-xl font-bold mb-4">Order Summary</h2>

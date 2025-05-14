@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Search, User, Bookmark, ShoppingCart, Filter } from "lucide-react";
+import { User, Bookmark, ShoppingCart, Filter } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Search } from "lucide-react";
 
 export default function App() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function App() {
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");  // Using the search term state
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [books, setBooks] = useState([]);
@@ -28,14 +29,14 @@ export default function App() {
     "Deals",
   ];
 
-  // Fetch books from the API
+  // Fetch book
   const fetchBooks = async (page = 1, search = "") => {
     try {
       const response = await axios.get("https://localhost:7227/api/book", {
         params: {
           page: page,
-          pageSize: 10, // Adjust the page size as needed
-          search: search,
+          pageSize: 10,
+          search: search,  
           category: selectedCategory,
           priceMin: priceRange.min,
           priceMax: priceRange.max,
@@ -45,11 +46,11 @@ export default function App() {
         },
       });
 
-      console.log("API Response:", response.data); // Log the response for debugging
+      console.log("API Response:", response.data); 
 
       if (response.data && Array.isArray(response.data)) {
         setBooks(response.data);
-        setTotalPages(5); // Set totalPages if your API provides that information (or adjust accordingly)
+        setTotalPages(5); 
       } else {
         setBooks([]);
         console.log("No books data found in response.");
@@ -60,11 +61,12 @@ export default function App() {
     }
   };
 
+
   useEffect(() => {
-    fetchBooks(currentPage, searchTerm);
+    fetchBooks(currentPage, searchTerm); 
   }, [
     currentPage,
-    searchTerm,
+    searchTerm, 
     selectedCategory,
     priceRange,
     selectedFormats,
@@ -90,13 +92,13 @@ export default function App() {
     navigate("/signin");
   };
 
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-    setCurrentPage(1); // Reset to page 1 when a new search term is entered
+  const handleBookClick = (bookId) => {
+    navigate(`/book/${bookId}`); 
   };
 
-  const handleBookClick = (bookId) => {
-    navigate(`/book/${bookId}`); // Navigate to book details page with the book id
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1); 
   };
 
   return (
@@ -117,7 +119,7 @@ export default function App() {
               placeholder="Search books, authors..."
               className="w-full border border-gray-300 rounded-md py-1 px-3 pr-10"
               value={searchTerm}
-              onChange={handleSearch}
+              onChange={handleSearch}  
             />
             <button className="absolute right-2 top-1/2 transform -translate-y-1/2">
               <Search className="h-5 w-5 text-gray-500" />
@@ -172,7 +174,6 @@ export default function App() {
       </div>
 
       <main className="container mx-auto px-4 py-6 flex-grow">
-        {/* Filter */}
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center">
             <button
@@ -204,13 +205,12 @@ export default function App() {
           </div>
         </div>
 
-        {/* Book Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {Array.isArray(books) && books.length > 0 ? (
             books.map((book) => (
               <div
                 key={book.id}
-                onClick={() => handleBookClick(book.id)} // Navigate to book details page
+                onClick={() => handleBookClick(book.id)} 
                 className="border border-gray-200 rounded-md overflow-hidden cursor-pointer"
               >
                 <div className="bg-gray-200 h-48 flex items-center justify-center">
@@ -235,7 +235,6 @@ export default function App() {
           )}
         </div>
 
-        {/* Pagination */}
         <div className="flex justify-center mt-8">
           <nav className="flex items-center space-x-2">
             {currentPage > 1 && (
