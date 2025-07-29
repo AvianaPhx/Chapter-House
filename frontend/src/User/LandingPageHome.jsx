@@ -3,9 +3,9 @@ import { User, Bookmark, ShoppingCart, ChevronRight, Search, Bell } from "lucide
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../Auth/AuthContext";
-import MainHeader from "../Components/MainHeader";
+import Header from "../Components/Header";
 
-export default function HomePage() {
+export default function LandingPage() {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("Home");
   const [searchTerm, setSearchTerm] = useState("");
@@ -80,7 +80,7 @@ export default function HomePage() {
         Summer Sale! 20% off on selected titles. Limited time offer.
       </div>
 
-      <MainHeader />
+      <Header />
 
       <header className="border-b border-gray-200 py-4">
         <div className="container mx-auto px-4 flex items-center justify-between">
@@ -98,38 +98,11 @@ export default function HomePage() {
           </div>
 
           <div className="flex items-center space-x-4">
-            <div className="relative flex items-center">
-              <button 
-                onClick={() => setShowUserMenu(!showUserMenu)} 
-                className="p-1 hover:bg-gray-100 rounded-md"
-              >
-                <User className="h-6 w-6" />
-              </button>
-
-              {showUserMenu && (
-                <div className="absolute right-0 top-full mt-1 w-48 bg-white rounded-md shadow-lg py-1 z-10 border border-gray-200">
-                  <Link 
-                    to="/profile" 
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Profile
-                  </Link>
-                  <button 
-                    onClick={handleLogout} 
-                    className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Logout
-                  </button>
-                </div>
-              )}
-            </div>
-
-            <Link to="/bookmarks" className="p-1 hover:bg-gray-100 rounded-md">
-              <Bookmark className="h-6 w-6" />
+            <Link to="/signin" className="px-4 py-2 text-sm bg-green-600 text-white rounded-md">
+              Login
             </Link>
-
-            <Link to="/cart" className="p-1 hover:bg-gray-100 rounded-md">
-              <ShoppingCart className="h-6 w-6" />
+            <Link to="/signup" className="px-4 py-2 text-sm border-2 border-green-600 rounded-md">
+              Register
             </Link>
           </div>
         </div>

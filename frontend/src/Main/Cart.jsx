@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Search, User, Bookmark, ShoppingCart, Trash2 } from "lucide-react";
+import { User, Bookmark, ShoppingCart, Trash2 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import MainHeader from "../Components/MainHeader";
 
 export default function Cart() {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ export default function Cart() {
 
         const formatted = data.map((item) => ({
           id: item.cartItemId,
+          bookId: item.bookId, // important fix!
           title: item.title,
           author: item.author,
           price: item.price,
@@ -60,7 +62,6 @@ export default function Cart() {
 
   const handleQuantityChange = (id, newQuantity) => {
     if (newQuantity < 1) return;
-
     setCartItems((prev) =>
       prev.map((item) =>
         item.id === id ? { ...item, quantity: newQuantity } : item
@@ -69,55 +70,58 @@ export default function Cart() {
   };
 
   const handleRemoveItem = async (id) => {
-  const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("accessToken");
 
-  try {
-    const response = await fetch(`https://localhost:7227/api/Cart/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    try {
+      const response = await fetch(`https://localhost:7227/api/Cart/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error("Failed to delete item");
-    }
+      if (!response.ok) {
+        throw new Error("Failed to delete item");
+      }
 
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+      setCartItems((prev) => prev.filter((item) => item.id !== id));
     } catch (error) {
       console.error("Error deleting item:", error);
     }
   };
 
-
   const handleCheckout = async () => {
-    const cartItemsToCheckout = cartItems.map(item => ({
-      BookId: item.id, 
-      Quantity: item.quantity, 
+    const cartItemsToCheckout = cartItems.map((item) => ({
+      BookId: item.bookId,
+      Quantity: item.quantity,
     }));
 
     try {
-      const response = await fetch('https://localhost:7227/api/Order/create', {
-        method: 'POST',
+      const response = await fetch("https://localhost:7227/api/Order/create", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
-        body: JSON.stringify(cartItemsToCheckout), 
+        body: JSON.stringify(cartItemsToCheckout),
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        alert(`Error: ${errorText || "Failed to checkout"}`);
-        return;
+        const errText = await response.text();
+        throw new Error(errText || "Failed to create order");
       }
 
-      const data = await response.json();
-      alert(`Order placed successfully! Order ID: ${data.orderId}, Total: $${data.totalAmount}`);
+      const orderResult = await response.json();
 
+      alert(
+        `Order placed successfully!\nOrder ID: ${orderResult.orderId}\nTotal: $${orderResult.totalAmount}`
+      );
+
+      setCartItems([]);
+      navigate("/orders");
     } catch (error) {
-      console.error('Error during checkout:', error);
-      alert("An error occurred during checkout. Please try again.");
+      console.error("Error during checkout:", error);
+      alert(`Checkout failed: ${error.message}`);
     }
   };
 
@@ -129,23 +133,9 @@ export default function Cart() {
 
   return (
     <div className="flex flex-col min-h-screen w-full">
+      <MainHeader />
       <header className="border-b border-gray-200 py-4">
         <div className="container mx-auto px-4 flex items-center justify-between">
-          <Link to="/home" className="text-xl font-medium">
-            ChapterHouse
-          </Link>
-
-          <div className="relative w-1/3">
-            <input
-              type="text"
-              placeholder="Search books, authors..."
-              className="w-full border border-gray-300 rounded-md py-1 px-3 pr-10"
-            />
-            <button className="absolute right-2 top-1/2 transform -translate-y-1/2">
-              <Search className="h-5 w-5 text-gray-500" />
-            </button>
-          </div>
-
           <div className="flex items-center space-x-4">
             <div className="relative flex items-center">
               <button
@@ -188,7 +178,6 @@ export default function Cart() {
         <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
 
         <div className="flex flex-col lg:flex-row gap-6">
-          {/* Cart Items */}
           <div className="w-full lg:w-2/3">
             <div className="border border-gray-200 rounded-md overflow-hidden">
               <div className="grid grid-cols-12 bg-gray-50 p-4 border-b border-gray-200">
@@ -297,8 +286,7 @@ export default function Cart() {
             <div>
               <h3 className="text-xl font-medium mb-2">ChapterHouse</h3>
               <p className="text-gray-600">
-                Your destination for quality books with easy shopping
-                experience
+                Your destination for quality books with easy shopping experience
               </p>
             </div>
             <div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { User, Package, Search, ChevronDown, ChevronUp, Filter, Check, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../Auth/AuthContext";
 
 export default function OrderManagement() {
   const [orders, setOrders] = useState([]);
@@ -12,6 +13,7 @@ export default function OrderManagement() {
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [showAcceptModal, setShowAcceptModal] = useState(false); 
   const [selectedOrderId, setSelectedOrderId] = useState(null);
+  const { logout } = useAuth();
 
   const navigate = useNavigate();
 
@@ -173,11 +175,15 @@ export default function OrderManagement() {
         });
   };
 
-  const handleLogout = () => 
+  const handleLogout = async () => 
     {
       localStorage.removeItem("accessToken");
-      localStorage.removeItem("Role");
-      navigate("/signin");
+      try {
+        await logout();
+        navigate("/signin");
+      } catch (error) {
+        console.error("Logout failed:", error);
+      }
     };
 
   return (

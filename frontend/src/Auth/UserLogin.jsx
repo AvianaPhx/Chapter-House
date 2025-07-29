@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import { useAuth } from './AuthContext';
+
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -8,56 +9,44 @@ export default function Login() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { currentUser, login } = useAuth();
+
+
+useEffect(() => {
+  if (currentUser) {
+    switch (currentUser.role) {
+      case "Admin":
+        navigate('/admin', { replace: true });
+        break;
+      case "Staff":
+        navigate('/staff', { replace: true });
+        break;
+      case "Member":
+      default:
+        navigate('/home', { replace: true });
+        break;
+    }
+  }
+}, [currentUser, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
+  
     if (!email || !password) {
       setError('Please enter both email and password');
       return;
     }
-
+  
     setIsLoading(true);
-
+  
     try {
-      const response = await axios.post("https://localhost:7227/api/Auth/signin", {
-        email,
-        password
-      }, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true
-      });
-
-      const { accessToken, isSuccess } = response.data;
-
-      if (isSuccess && accessToken) {
-        const base64Url = accessToken.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const payload = JSON.parse(atob(base64));
-
-        const role = payload.role || payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
-
-        localStorage.setItem('accessToken', accessToken);
-        localStorage.setItem('Role', role);
-
-        switch (role) {
-          case "Admin":
-            navigate('/admin');
-            break;
-          case "Staff":
-            navigate('/staff');
-            break;
-          case "Member":
-          default:
-            navigate('/home');
-            break;
-        }
-      } else {
-        setError("Invalid credentials");
+      const result = await login(email, password);
+      if (!result.success) {
+        setError(result.message || "Invalid credentials");
       }
     } catch (err) {
-      setError(err.response?.data?.message || err.message || "Login failed. Please try again.");
+      setError(err.message || "Login failed. Please try again.");
     } finally {
       setIsLoading(false);
     }

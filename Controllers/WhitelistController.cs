@@ -34,15 +34,26 @@ namespace Chapter_House.Controllers
             }
 
             var myWhitelist = await _dbContext.Whitelists
-                .Where(w => w.UserId == currentUser.Id) 
-                .Include(w => w.Book) 
+                .Where(w => w.UserId == currentUser.Id)
+                .Include(w => w.Book)
                 .Select(w => new WhitelistItemDto
                 {
                     Id = w.Book.Id,
                     Title = w.Book.Title,
                     Price = w.Book.Price,
                     Description = w.Book.Description,
-                    Isbn = w.Book.Isbn
+                    Isbn = w.Book.Isbn,
+                    AuthorName = w.Book.AuthorName,
+                    Stock = w.Book.Stock,
+                    OnSale = w.Book.OnSale,
+                    DiscountedPercentage = w.Book.DiscountedPercentage ?? 0,
+                    DiscountEndDate = w.Book.DiscountEndDate,
+                    Image = null, 
+                    Rating = w.Book.Rating,
+                    GenreName = w.Book.GenreName,
+                    FormatName = w.Book.FormatName,
+                    PublisherName = w.Book.PublisherName,
+                    Language = w.Book.Language
                 })
                 .ToListAsync();
 

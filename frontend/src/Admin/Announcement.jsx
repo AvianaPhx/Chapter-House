@@ -131,17 +131,6 @@ export default function Announcement() {
 
             <button
                 className={`w-full py-3 px-4 text-left rounded font-medium ${
-                activeButton === 'discount'
-                    ? 'bg-emerald-600 text-black'
-                    : 'text-gray-700 hover:bg-gray-100'
-                }`}
-                onClick={() => navigate('/discount')}
-            >
-                Discount Management
-            </button>
-
-            <button
-                className={`w-full py-3 px-4 text-left rounded font-medium ${
                 activeButton === 'logout'
                     ? 'bg-emerald-600 text-black'
                     : 'text-gray-700 hover:bg-gray-100'
